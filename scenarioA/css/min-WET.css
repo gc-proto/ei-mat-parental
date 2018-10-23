@@ -12753,7 +12753,7 @@ aside.features .thumbnail img {
 .secondary .row h2 a,
 .secondary .row h3 a,
 .secondary .row h4 a {
-    font-size: 16px
+  /*  font-size: 16px */
 }
 
 .thumbnail {

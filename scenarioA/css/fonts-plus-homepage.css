@@ -101,7 +101,30 @@ h5 {
 
 }
 
+/* theme page uncarousels */
+div.uncarousel {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+div.uncarousel a.learnmore figcaption {
+	background-color: #f9f9f9 !important;
+	border: 1px #ddd solid;
+}
+div.uncarousel a.learnmore figcaption p {
+	text-decoration: underline !important;
+	color: #284162;
+	margin: 0 0 0 11.5px;
+}
+.wb-tabs.carousel-s1 figcaption, .wb-tabs.carousel-s2 figcaption {
+	z-index: 1 !important;
+}
 
+
+.gc-drmt h3 {
+
+	font-size: 20px !important;
+
+}
 
 body, header, nav#wb-bc {
 
@@ -199,6 +222,15 @@ abbr {
 }
 
 /* controls bullet spacing */
+
+.lnkbx ul li {
+	font-size: 19px !important;
+		line-height: 28px !important;
+		list-style-type: disc !important;
+		color: black;
+
+	margin-left: 50px;
+}
 
 .bullet {
 
@@ -348,16 +380,7 @@ background-color: #F8F8F8;
 		background-position: right center;
 }
 
-.by-aud {
-	 background-image: url("../images/audience.jpg");
-    background-color: #f0f0f0;
-    display: inline-block;
-    padding-top: 30px !important;
-    padding-bottom: 40px !important;
-		background-repeat: no-repeat;
 
-		background-position: right center;
-}
 
 .edge-color {
     background-color: #f0f0f0;
