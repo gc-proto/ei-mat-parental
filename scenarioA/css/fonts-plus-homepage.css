@@ -68,7 +68,7 @@ h5 {
 
 	font-size: 20px !important;
 	font-family: 'Noto sans', sans-serif !important;
-	line-height: 34px !important;
+	line-height: 1.7 !important;
 	padding-top: 8px !important;
 	padding-bottom: 8px !important;
 
@@ -94,9 +94,9 @@ h5 {
 
 .mr-home {
 
-	font-size: 18px !important;
+	font-size: 17px !important;
 	font-weight: 600 !important;
-	padding-bottom: 7px ;
+	padding-bottom: 6px ;
 	font-family: 'Lato', sans-serif !important;
 
 }
@@ -143,7 +143,6 @@ ul.menu li {
 }
 
 
-
 .is-size-5 {
 
 		font-size: 19px !important;
@@ -173,9 +172,17 @@ td {
 
 }
 
+
+.ui-link
+
+{
+ font-size: 17px !important;
+
+}
+
 caption, th {
 
-	font-size: 17px !important;
+	font-size: 19px !important;
 	font-family: 'Noto sans', sans-serif; !important;
 
 }
@@ -320,6 +327,38 @@ background-color: #F8F8F8;
 		background-position: right center;
 }
 
+.your-gov-2 {
+	 background-image: url("../images/your-gov-2.jpg");
+    display: inline-block;
+    padding-top: 30px !important;
+    padding-bottom: 40px !important;
+		background-repeat: no-repeat;
+
+		background-position: right center;
+}
+
+.your-gov-3 {
+	 background-image: url("../images/your-gov.jpg");
+    display: inline-block;
+    padding-top: 30px !important;
+    padding-bottom: 40px !important;
+		background-repeat: no-repeat;
+		background-color: white !important;
+
+		background-position: right center;
+}
+
+.by-aud {
+	 background-image: url("../images/audience.jpg");
+    background-color: #f0f0f0;
+    display: inline-block;
+    padding-top: 30px !important;
+    padding-bottom: 40px !important;
+		background-repeat: no-repeat;
+
+		background-position: right center;
+}
+
 .edge-color {
     background-color: #f0f0f0;
     display: inline-block;
@@ -347,6 +386,15 @@ background-color: #F8F8F8;
 	border-top: 3px solid #38414d;
 		margin-top: 10px;
 }
+
+body.homepage .canadamenu {
+	display: inline-block;
+	width: 100%;
+	max-height: 100px;
+	border-top: 1px solid #ddd;
+	margin-top: 10px;
+}
+
 
 .homemenu {
 
