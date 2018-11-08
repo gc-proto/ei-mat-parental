@@ -3,6 +3,11 @@
 
 /* start font customizations */
 
+h1, h2, h3, h4, h5, h6 {
+
+		font-variant-ligatures: no-common-ligatures;
+}
+
 h1 {
 
 	font-size: 38px !important;
@@ -29,7 +34,7 @@ h2 {
 	font-weight: 600 !important;
 	font-family: 'Lato', sans-serif;
 	padding-top: 15px !important;
-
+font-variant-ligatures: no-common-ligatures;
 
 }
 
