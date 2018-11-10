@@ -123,7 +123,8 @@ body.content p {
 .h2 /* includes custom spacing for SITS */{
 
 	font-size: 38px !important;
-	margin-bottom: 0px !important;
+	padding-top: 38px !important;
+
 
 }
 
