@@ -269,10 +269,8 @@ abbr {
 
 .lnkbx ul li {
 	font-size: 19px !important;
-		line-height: 28px !important;
-		list-style-type: disc !important;
-
-
+	line-height: 28px !important;
+	list-style-type: disc !important;
 	margin-left: 50px;
 }
 
@@ -282,9 +280,7 @@ abbr {
 		font-size: 19px !important;
 			line-height: 28px !important;
 			list-style-type: disc !important;
-
-
-		margin-left: 50px;
+			margin-left: 50px;
 
 }
 
