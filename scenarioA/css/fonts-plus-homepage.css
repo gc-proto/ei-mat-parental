@@ -18,6 +18,54 @@ h1 {
 
 }
 
+
+h2 {
+
+	font-size: 38px !important;
+	font-weight: 600 !important;
+	font-family: 'Lato', sans-serif;
+	padding-top: 15px !important;
+
+}
+
+
+h3 {
+
+	font-size: 26px !important;
+	font-weight: 600 !important;
+	font-family: 'Lato', sans-serif;
+	padding-top: 5px !important;
+
+}
+
+
+h4 {
+
+	font-size: 21px !important;
+	font-weight: 600 !important;
+	font-family: 'Lato', sans-serif;
+}
+
+
+
+h5 {
+
+	font-size: 19px !important;
+	font-weight: 600 !important;
+	font-family: 'Lato', sans-serif;
+}
+
+
+h6 {
+
+	font-size: 19px !important;
+	font-weight: 100 !important;
+	font-family: 'Lato', sans-serif;
+
+}
+
+/* home page specific targets */
+
 .mini-h2s {
 
 	padding-top: 0px !important;
@@ -28,46 +76,17 @@ h1 {
 }
 
 
-h2 {
+.mr-home {
 
-	font-size: 37px !important;
+	font-size: 17px !important;
 	font-weight: 600 !important;
-	font-family: 'Lato', sans-serif;
-	padding-top: 15px !important;
-font-variant-ligatures: no-common-ligatures;
+	padding-bottom: 6px ;
+	font-family: 'Lato', sans-serif !important;
 
 }
 
 
-h3 {
-
-	font-size: 28px !important;
-	font-weight: 600 !important;
-	font-family: 'Lato', sans-serif;
-	padding-top: 5px !important;
-
-}
-
-
-h4 {
-
-	font-size: 23px !important;
-	font-weight: 600 !important;
-	font-family: 'Lato', sans-serif;
-}
-
-
-
-h5 {
-
-	font-size: 20px !important;
-	font-weight: 600 !important;
-	font-family: 'Lato', sans-serif;
-}
-
-
-
-/* larger font size for text-heavy content */
+/* larger font size for text-heavy content
 .p-content, summary
 
 {
@@ -78,13 +97,16 @@ h5 {
 	padding-top: 8px !important;
 	padding-bottom: 8px !important;
 
-}
+}*/
 
 
 div.pagedetails summary.btn {
 
 	font-size: 16px !important;
 }
+
+/* larger font size for text-heavy content */
+
 
 body.content p {
 
@@ -96,10 +118,18 @@ body.content p {
 
 }
 
-/* On this page, reducing size as an h2*/
-.smh3 {
+/* Customizations for headers in SIT for accessibility, like on this page, h3s that need to be as big as h2s, etc */
 
-	font-size: 28px !important;
+.h2 /* includes custom spacing for SITS */{
+
+	font-size: 38px !important;
+	margin-bottom: 0px !important;
+
+}
+
+.h3 {
+
+	font-size: 26px !important;
 	margin-bottom: 0px !important;
 
 }
@@ -113,14 +143,6 @@ body.content p {
 }
 
 
-.mr-home {
-
-	font-size: 17px !important;
-	font-weight: 600 !important;
-	padding-bottom: 6px ;
-	font-family: 'Lato', sans-serif !important;
-
-}
 
 /* theme page uncarousels */
 div.uncarousel {
@@ -268,16 +290,26 @@ abbr {
 .content-bullet {
 
 
-	font-size: 20px !important;
+		font-size: 20px !important;
 		line-height: 35px !important;
 		list-style-type: disc !important;
-
-
-	margin-left: 50px;
-
-
+		margin-left: 50px;
 
 }
+
+body.content div.bullet li {
+
+
+		font-size: 20px !important;
+		line-height: 35px !important;
+		list-style-type: disc !important;
+		margin-left: 50px;
+		padding-top: 5px !important;
+		padding-bottom: 5px !important;
+
+}
+
+
 
 /* used when bullets are more than short points, and run 2 full lines or more */
 
@@ -555,12 +587,12 @@ section.lnkbx ul {
 			}
 
 	h3 {
-				font-size: 25px !important;
+				font-size: 24px !important;
 
 					}
 
 	h4 {
-						font-size: 22px !important;
+						font-size: 20px !important;
 									}
 
 	.ch5 {
