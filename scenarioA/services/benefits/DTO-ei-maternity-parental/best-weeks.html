@@ -196,14 +196,8 @@
 <h2>Estimate your expected payments</h2>
 <p>This is intended to give you a sense of how much you could receive. Your actual values could vary, so confirm these details when you apply.</p>
 
-<form action="#">
-
-<div class="form-group">
-	<label for="salary">Annual salary</label><br />
-	<input type="text" id="salary" size='15'>
-</div>
 <details>
-	<summary><p>If your income varies week to week</p></summary>
+	<summary><p>If your income is different week to week</p></summary>
 
 <h3>Best weeks</h3>
 	<p>We calculate your total insurable earnings for the required number of "best weeks". These are the weeks that you earned the most money, including insurable tips, bonuses and commissions.</p>
@@ -216,22 +210,37 @@
 
 
 <h3>Estimate based on best weeks</h3>
+<!-- redudnant if they've read above
+<p>You will need to know your best weeks and which type of leave you're taking. Maternity and Standard Parental are paid at 55%, Extended benefits are paid at 33%.</p>
+-->
+<br>
+<input type="text" id="earnings" placeholder="&nbsp;All earnings in the best weeks period" size='35'> / <br>
+<input type="text" placeholder="&nbsp;Number of best weeks for your region" id="bestweeks" size='35'> X <br>
+<input type="text" placeholder="&nbsp;55% or 33% (benefit rate)" id="rate" size='35'><br>
+<input type="text" placeholder="$0" id="answer-2" size='10'> payed per week*<p></p>
 
+<small>*This is for estimation only. We can't tell exactly how much you will receive until your application is processed.</small>
 
-<input type="text" id="earnings" placeholder="&nbsp;All earnings in best weeks period" size='35'> / <br>
-<input type="text" placeholder="&nbsp;Number of best weeks" id="bestweeks" size='35'> X <br>
-<input type="text" placeholder="&nbsp;Standard or Extended (55% or 33%)" id="bestweeks" size='35'><br>
-<input type="text" placeholder="$" id="answer-2" size='10'> payed per week*
+<p></p>
 
+<details><summary>Example</summary>
+<p>Maya has had less shifts than usual over the past month (4 weeks), and wants to estimate how this could affect her benefit pay. Her region's best weeks use her income based on the last 14 weeks.</p>
 
-<p>
+<p>Maya sees that her benefit would be calculated on a lower income than usual if she took her leave now, so she decides to discuss getting some more shifts and work for 2 more weeks.</p>
+<br>
+<mark>CALCULATION EXAMPLE?<mark></p>
 
-	<h3>Example</h3>
-	<p>Maya has had less shifts than usual over the past 2 months (8 weeks), and wants to estimate how this could affect her benefits. Her region's best weeks use her income based on the last 16 weeks. Maya sees that half her benefit would be calculated on a lower salary than usual if she took her leave now, and decides to work for 2 more weeks and request some extra hours.</p>
-
-	<p><small>*This is meant to help you plan. We can't tell exactly how much you will receive until your application is processed.</small></p>
 
 </details>
+</details>
+
+<br>
+<form action="#">
+
+<div class="form-group">
+	<label for="salary">Annual salary</label><br />
+	<input type="text" id="salary" size='15'>
+</div>
 
 <br>
 <!--
@@ -286,7 +295,7 @@
 <li  ><mark>how long the top-up will last</mark></li>
 <li  ><mark>if you’ll be required to return to work by a certain time and remain at your job for a minimum period of time</li>
 </mark></ul>
-
+<!--
 <h2 class="h2">Calculation of benefits</h2>
 
 <p>The amount of weekly benefits is calculated as follows:</p>
@@ -300,7 +309,7 @@
 
 <p>In regions of Canada with the highest rates of unemployment, we will calculate using the best 14 weeks; in regions of Canada with the lowest rates of unemployment, we will use the best 22 weeks. In other regions, the number of weeks used to calculate benefits will be somewhere between 14 and 22, depending on the unemployment rate in those regions.</p>
 <h3><mark>Best weeks</mark></h3>
-<p><mark>Remove above paragraph? Explain best weeks Link to postal code look up?</mark></p>
+<p><mark>Remove above paragraph? Explain best weeks Link to postal code look up?</mark></p> -->
 
 <h2 class="h2">EI Family Supplement</h2>
 
