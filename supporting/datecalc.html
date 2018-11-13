@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+<head>
+
+	<title>Benefits - Canada.ca</title>
+</head>
+<body>
+
+<h1>Estimated benefit dates</h1>
+<p>The dates and percentage of your salary will vary depending on what types of leave you take. This provides an <strong>estimate</strong> of how long your leave will last based on the information you give. Your actual dates may vary depending on other factors - apply to see for sure. </p>
+
+<form action="">
+
+<label for="salary">What's your approximate annual salary?</label><br />
+<input type="text" id="salary" value=""><br><br>
+
+<label for="duedate">When is your expected due date?</label><br />
+<input type="text" id="duedate" value=""><br>
+
+<p>How many weeks of each type of leave will you take?</p>
+
+	<label for="matweeks">Maternity leave: </label><br />
+	<input type="text" id="matweeks" value="15"><br><br>
+
+	<label for="matweeks">Parental leave:</label><br />
+	<input type="text" id="parentalweeks" value="55"><br><br>
+
+<input type="submit" value="Get date">
+</form>
+
+
+
+<script type="text/javascript">
+
+var month = new Array();
+	month[0] = "January";
+	month[1] = "February";
+	month[2] = "March";
+	month[3] = "April";
+	month[4] = "May";
+	month[5] = "June";
+	month[6] = "July";
+	month[7] = "August";
+	month[8] = "September";
+	month[9] = "October";
+	month[10] = "November";
+	month[11] = "December";
+
+var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+var today = new Date() // This should be the due date they entered...
+var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
+
+var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
+var currentSeconds = today.getTime();
+
+var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
+var percentVal = "55%"; // could be 33 if extending parental benefits
+var cashVal = 25000;
+
+var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
+
+var futureDate = new Date(futureSeconds);
+
+
+// The locale should be FR-CA if the page is French
+// Need to make sure this works in typically tested browsers...
+
+// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
+
+// These might work if not...
+var theyear = futureDate.getFullYear();
+var themonth = month[futureDate.getMonth()];
+var thetoday = futureDate.getDate();
+
+var newDate = themonth + " " + thetoday + ", " + theyear;
+
+// document.write("Today is " + today + "<br>");
+// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
+// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
+
+document.write("<h2>Estimated calculation</h2>");
+document.write("<p>If you start your leave on " + dueDate + "<br>");
+document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
+document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " + cashVal);
+
+</script>
+
+</body>
+</html>
