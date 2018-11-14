@@ -177,41 +177,74 @@
 	<div class="row bullet">
 	<div class="col-md-8">
 	<h2 class="mrgn-tp-0">
-	3. How much you could receive</h2>
+	3. Plan your leave</h2>
 
 
-<p>The amount could vary between maternity and parental benefits. We can't tell exactly how much you will receive until your application is processed.</p>
-
-<h3>Maternity benefits</h3>
-<p>For most people, EI maternity benefits are 55% of your average insurable weekly earnings, up to a maximum amount. ("Insurable" means you paid EI premiums on them.) In 2018, the maximum amount is $547 a week.</p>
-
-<h3>Parental benefts</h3>
-
-<p>EI parental benefits depend on the payment option you choose:</p>
-
-<p><b>Standard parental benefits</b> last up to 35 weeks and are paid at a weekly rate of 55% of your average insurable weekly earnings, up to a maximum amount. In 2018, the maximum amount is $547 a week.</p>
-
-<p><b>Extended parental benefits</b> last up 61 weeks and are paid at a weekly rate of 33% of your average weekly insurable earnings, up to a maximum amount. In 2018, the maximum amount is $328 per week. This amount can be increased if you are eligible to receive the Family Supplement.</p>
+<p>We can't tell exactly how much you will get until your application is processed, but you can estimate your likely payments and how long you will get them.</p>
 
 <h3>Estimate your expected payments</h3>
-<p>This is intended to give you a sense of how much you could receive. Your actual values could vary, so confirm these details when you apply.</p>
+<!-- <p>This is intended to give you a sense of how much you could receive. Your actual values could vary, so confirm these details when you apply.</p> -->
 
 <form action="#">
 
+<!-- We need to make it possible to get the number of weeks but at the same time make it easy for people to get the calculation. -->
+
 <div class="form-group">
-	<label for="salary">Annual salary</label><br />
-	<input type="text" id="salary" size='7'>
+	<fieldset>
+		<legend>Which benefits are you applying for?</legend>
+		<div class="checkbox">
+					<label for="matandparental"><input checked="checked" type="checkbox" name="matorpar" value="matandparental" id="matandparental" />&#160;&#160;Maternity (for the person giving birth only)</label>
+		</div>
+		<div class="checkbox">
+					<label for="parentalonly"><input checked="checked" type="checkbox" name="matorpar" value="parentalonly" id="parentalonly" />&#160;&#160;Parental (for any legal parent)</label>
+		</div>
+	</fieldset>
 </div>
-<p>Or...</p>
+
+<p>The amount you get depends on your average weekly insurable earnings, up to a maximum of <mark>$1000</mark> per week. ("Insurable" earnings are any income you paid EI premiums on, including tips, bonuses, and commissions.) </p>
+
+<details>
+<summary>If your weekly earnings vary</summary>
+
+
+<p>The average is taken from your highest-earning (best) weeks over the past year. The number of best weeks to use for the average depends on where you live (in regions with higher unemployment, fewer weeks are used). Enter your postal code to see how many best weeks to use.</p>
+
+<div class="form-group">
+	<label for="postalcode">Your postal code</label><br />
+	<input type="text" id="postalcode" size='7'>
+	<input type="button" name="postalcheck" id="postalcheck" value="Get best weeks" class="btn">
+</div>
+
+<div id="bestweeksresult" style="display:none">
+	<p>For <b>B3H</b>, we use the average of your best <b>21</b> weeks.</p>
+</div>
+<p>Now calculate your total insurable earnings for that 21 weeks. (You could just estimate to get a good sense of how much)</p>
+<div class="formgroup">
+<label for="earnings">Your total earnings for your highest-earning <b>21</b> weeks</label><br />
+<input type="text" id="earnings" size='6'> <p></p>
+</div>
+<input type="button" name="averagecalc" id="averagecalc" value="Get average" class="btn btn-primary">
+<div id="averageresult" style="display:none">
+	<p><b>$15,233</b> divided by <b>21</b> weeks = <b>$725.28</b> average weekly earnings</p>
+</div>
+</details>
+<br />
 <div class="form-group">
 	<label for="weeklyincome">Average weekly earnings</label><br />
-	<input type="text" id="weeklyincome" size='7'>/week
+	<input type="text" id="weeklyincome" size='7'> /week
 </div>
 
 <div class="form-group">
-	<label for="startdate">Expected application date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
-	<p>This should be the date after your last day at work.</p>
-	<input class="form-control" type="date" id="startdate" name="startdate" />
+	<fieldset>
+		<legend>Are you using all of the parental benefit, or will you be sharing it?</legend>
+		<p>(You'll get more in total if you share it with another parent)</p>
+		<div class="radio">
+					<label for="useallleave"><input  type="radio" name="shareorno" value="useallleave" id="useallleave" />&#160;&#160;Use the whole benefit for one parent</label>
+		</div>
+		<div class="radio">
+					<label for="shareleave"><input  type="radio" name="shareorno" value="shareleave" id="shareleave" />&#160;&#160;Share the benefit</label>
+		</div>
+	</fieldset>
 </div>
 
 <div class="form-group">
@@ -227,13 +260,25 @@
 </div>
 
 <div class="form-group">
-<label for="sharedweeks">How many weeks of parental leave will you share?</label><br />
-<input type="text" id="sharedweeks" size="2" value="0">
-<div>
-	<input type="submit" name="fbsbmt" id="fbsbmt" value="Estimate amounts" class="btn btn-primary">
+	<label for="sharedweeks">How many weeks of parental leave will you share?</label><br />
+	<input type="text" id="sharedweeks" size="2" value="0">
+</div>
+
+<div class="form-group">
+	<label for="startdate">When will you apply? <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
+	<p>(This should be the date after your last day at work.)</p>
+	<input class="form-control" type="date" id="startdate" name="startdate" />
+</div>
+
+<div style="padding-top:1.5em">
+	<input type="button" name="fbsbmt" id="docalc" value="Get estimate" class="btn btn-primary">
 </div>
 </form>
 
+
+
+
+<div id="calcresults" style="display: none">
 <h4>Estimated results</h4>
 <ul>
 <li>If you apply on <b>December 14, 2018</b><!-- startdate -->, you should begin receiving payments by about <b>January 3, 2019</b><!-- startdate+paydelay -->.</li>
@@ -243,6 +288,25 @@
 	<li>You'll get 31 weeks of parental benefits, ending about <b>November 1, 2019</b></li>
 	<li>Other parents have 4 weeks to share and should apply separately.</li>
 </ul>
+
+<small>*This is for estimation only. We can't tell exactly how much you will receive until your application is processed.</small>
+
+</div>
+
+<h3>Maternity benefits</h3>
+<p>Maternity benefits can only be claimed by the biological mother. For most people, EI maternity benefits are 55% of your average insurable weekly earnings, up to $547 per week. ("Insurable" earnings mean income you paid EI premiums on.)</p>
+
+<h3>Parental benefts</h3>
+
+<p>Parental benefits can all be used by one parent or shared among parents. You'll get more benefits if you share them. You can choose standard or extended benefits.</p>
+
+<p><b>Standard parental benefits</b> last up to 35 weeks and are 55% of your average insurable weekly earnings, up to a $547 per week.</p>
+
+<p><b>Extended parental benefits</b> last up 61 weeks and are 33% of your average weekly insurable earnings, up to $328 per week. This amount can be increased if you are eligible to receive the <a href="#supplement">Family Supplement</a>.</p>
+
+<p>If you share your parental benefits, the total increases to 39 weeks for regular benefits and 69 weeks for extended benefits.</p>
+
+
 <h2><mark>Employer-sponsored income top-ups</mark></h2>
 <p><mark>Some employers may offer you an income top-up when you're on parental leave. This top-up pays a portion of your regular salary and supplements your EI or Quebec Parental Insurance Plan benefits.</mark></p>
 
@@ -398,6 +462,25 @@
 <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../../js/scripts.js"></script>
 <script src="../../../js/megamenu-loader.js"></script>
-
+<script type="text/javascript">
+$(document).ready(
+    function(){
+        $("#docalc").click(function () {
+            $("#calcresults").show("slow");
+        });
+    });
+		$(document).ready(
+				function(){
+						$("#postalcheck").click(function () {
+								$("#bestweeksresult").show("slow");
+						});
+		    });
+		$(document).ready(
+				function(){
+						$("#averagecalc").click(function () {
+								$("#averageresult").show("slow");
+						});
+		    });
+</script>
 </body>
 </html>
