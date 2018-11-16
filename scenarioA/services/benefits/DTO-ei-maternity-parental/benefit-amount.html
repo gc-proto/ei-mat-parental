@@ -140,7 +140,7 @@
 
 
 	    <h1 property="name" id="wb-cont" dir="ltr">
-	EI Maternity and Parental Benefits - How much could you receive</h1>
+	EI Maternity and Parental Benefits - How much you could receive</h1>
 
 
 
@@ -160,7 +160,7 @@
 						<a href="./eligibility.html" class="list-group-item">2. Eligibility <mark>Who can apply</mark></a>
 					</li>
 					<li class="col-md-4">
-						<a href="./benefit-amount.html" class="list-group-item active">3. How much...<mark>Plan your leave</mark></a>
+						<a href="./benefit-amount.html" class="list-group-item active">3. How much you could receive</a>
 					</li>
 					<li class="col-md-4">
 						<a href="./apply.html" class="list-group-item">4. Apply</a>
@@ -177,7 +177,7 @@
 	<div class="row bullet">
 	<div class="col-md-8">
 	<h2 class="mrgn-tp-0">
-	3. How much could you receive</h2>
+	3. How much you could receive</h2>
 <!-- <details><summary>Objectives</summary>
 <ul>
 			<li  >How benefits are calculated</li>
@@ -187,25 +187,25 @@
 			<li  >Ei Family supplement</li>
 			<li  >When payments will end</li>
 		</details> -->
-		<p>We can't tell exactly how much you will get until your application is processed, but you can estimate your likely payments and how long you will get them. Some employers provide additional money while on leave (called a "top-up"). Check with your employer to see if this applies to you.</p>
+		<p>We can't tell exactly how much you will get until your application is processed, but you can get an estimate of how much you could receive and for how long. Some employers provide additional money while your're on maternity or parental leave. This is called a top-up. Check with your employer to see if this applies to you.</p>
 
-		<h2>Estimate your expected payments</h2>
+		<h2>Estimate your payments</h2>
 		<!-- <p>This is intended to give you a sense of how much you could receive. Your actual values could vary, so confirm these details when you apply.</p> -->
 
 		<form action="#">
 
 		<!-- We need to make it possible to get the number of weeks but at the same time make it easy for people to get the calculation. -->
 
-		<p>The amount you get depends on your average weekly insurable earnings. ("Insurable" earnings are any income you paid EI premiums on, including tips, bonuses, and commissions.) If you earn $994 or more per week, you'll get the maximum amount.</p>
+		<p>The amount you get depends on your average weekly insurable earnings. Insurable earnings are any income you paid EI premiums on, including tips, bonuses, and commissions. If you earn more than $994.23 per week, you'll get the maximum amount.</p>
 
 		<details>
 		<summary>If your weekly earnings vary</summary>
 
 
-		<p>The average is taken from your highest-earning (best) weeks over the past year. The number of best weeks to use for the average depends on where you live (in regions with higher unemployment, fewer weeks are used). Enter your postal code to see how many best weeks to use.</p>
+		<p>The average weekly earnings are taken from the weeks where you earned the most, also known as best weeks, over the past year. The number of best weeks to use for the average depends on where you live. Enter your postal code to see how many best weeks to use in your estimate.</p>
 
 		<div class="form-group">
-			<label for="postalcode">Your postal code</label><br />
+			<label for="postalcode">Postal code</label><br />
 			<input type="text" id="postalcode" size='7'>
 			<input type="button" name="postalcheck" id="postalcheck" value="Get best weeks" class="btn">
 		</div>
@@ -215,7 +215,7 @@
 		</div>
 		<p>Now enter your total insurable earnings for that number of weeks. If your earnings increase, you may get more money.</p>
 		<div class="formgroup">
-		<label for="earnings">Your total earnings for your highest-earning weeks</label><br />
+		<label for="earnings">Your total earnings for your best weeks</label><br />
 		<input type="text" id="earnings" size='6'>
 		<input type="button" name="averagecalc" id="averagecalc" value="Get average weekly earnings" class="btn">
 		</div>
@@ -244,7 +244,7 @@
 							<label for="matandparental"><input checked="checked" type="checkbox" name="matorpar" value="matandparental" id="matandparental" />&#160;&#160;Maternity (for the person giving birth only)</label>
 				</div>
 				<div class="checkbox">
-							<label for="parentalonly"><input checked="checked" type="checkbox" name="matorpar" value="parentalonly" id="parentalonly" />&#160;&#160;Parental (for any legal parent)</label>
+							<label for="parentalonly"><input checked="checked" type="checkbox" name="matorpar" value="parentalonly" id="parentalonly" />&#160;&#160;Parental (for parents)</label>
 				</div>
 			</fieldset>
 		</div>
@@ -254,13 +254,13 @@
 				<legend>What type of parental benefits will you take?</legend>
 
 				<div class="radio">
-							<label for="parental"><input  type="radio" name="leavetype" value="parental" id="parental" />&#160;&#160;Standard parental (up to 35 weeks + 5 if shared, up to $547 per week)</label>
+							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard parental (up to 35 weeks + 5 if shared, up to $547 per week)</label>
 				</div>
 				<!-- <div class="radio">
 							<label for="sharedparental"><input  type="radio" name="leavetype" value="sharedparental" id="sharedparental" />&#160;&#160;Shared parental (up to 40 weeks at a maximum of $547)</label>
 				</div> -->
 				<div class="radio">
-							<label for="regular"><input  type="radio" name="leavetype" value="regular" id="regular" />&#160;&#160;Extended parental (up to 61 weeks + 8 if shared, up to $328 per week)</label>
+							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended parental (up to 61 weeks + 8 if shared, up to $328 per week)</label>
 				</div>
 				<!-- <div class="radio">
 							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Shared extended parental (up to 69 weeks at a maximum of $328)</label>
@@ -269,14 +269,27 @@
 		</div>
 
 		<div class="form-group">
+			<fieldset>
+				<legend>Will you be sharing parental benefits?</legend>
+
+				<div class="radio">
+							<label for="yes"><input  type="radio" name="willushare" value="yes" id="yes" />&#160;&#160;Yes</label>
+				</div>
+				<div class="radio">
+							<label for="extended"><input  type="radio" name="willushare" value="no" id="no" />&#160;&#160;No</label>
+				</div>
+			</fieldset>
+		</div>
+
+		<div class="form-group">
 			<legend>How many weeks of parental leave will you share?</legend>
-			<p>(Sharing benefits among parents make more weeks of benefits available.)</p>
-			<input type="text" id="sharedweeks" size="2" value="0">
+			<!-- <p>(Sharing benefits among parents make more weeks of benefits available.)</p> -->
+			<input type="text" id="sharedweeks" size="2" value="">
 		</div>
 
 		<div class="form-group">
 			<label for="startdate">When will you apply? <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
-			<p>(This should be the date after your last day at work.)</p>
+			<p style="margin-top:-.8em; font-size:0.7em">(This should be the date after your last day at work.)</p>
 			<input class="form-control" type="date" id="startdate" name="startdate" />
 		</div>
 
@@ -290,20 +303,20 @@
 
 		<div id="calcresults" style="display: none">
 		<h3>Estimated results:</h3>
-		<p>This is for <strong>estimation only</strong>. We can't tell exactly how much you will receive until your application is processed.</p>
+		<p>This is for <strong>estimation only</strong> based on what you entered above. We can't tell exactly how much you will receive until your application is processed.</p>
 		<ul>
 		<li>If you apply on <b>December 14, 2018</b><!-- startdate -->, you should begin receiving payments around <b>January 15, 2019</b><!-- startdate+paydelay -->.</li>
 		<li>Your maternity benefits are estimated at <b>$514</b><!-- calcmatpayment --> per week.</li>
 			<li>Your 15 weeks of maternity benefits will end about <b>March 29, 2019</b>.<!-- startdate+15weeks --></li>
-			<li>Your regular parental benefits will then begin. That should be <b>$514</b><!-- calcparpayment -->  per week.</li>
+			<li>Your regular parental benefits will then begin. Those are estimated at <b>$514</b><!-- calcparpayment -->  per week.</li>
 			<li>You'll get 31 weeks of parental benefits, ending around <b>November 1, 2019</b></li>
 			<li>Other parents have 4 weeks to share and should apply separately.</li>
 			<li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li>
 		</ul>
 		<h4>If you took extended parental benefits:</h4>
 		<ul>
-			<li>Your parental benefits would begin around <b>March 29, 2019</b>. That is estimated at <b>$314</b><!-- calcparpayment -->  per week.</li>
-			<li>You'll get 65 weeks of parental benefits, ending around <b>June 26, 2020</b></li>
+			<li>Your parental benefits would begin around <b>March 29, 2019</b>. Those are estimated at <b>$314</b><!-- calcparpayment -->  per week.</li>
+			<li>You'll get <b>65</b> weeks of parental benefits, ending around <b>June 26, 2020</b></li>
 			<li>Other parents have 4 weeks to share and should apply separately.</li>
 
 		</ul>
