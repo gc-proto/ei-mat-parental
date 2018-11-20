@@ -154,22 +154,25 @@
 	    <div class="row">
 	      <ul class="toc lst-spcd col-md-12">
 					<li class="col-md-4">
-						<a href="./ei-maternity-parental.html" class="list-group-item">1. What these benefits offer</a>
+						<a href="./ei-maternity-parental.html" class="list-group-item">What these benefits offer</a>
 					</li>
 					<li class="col-md-4">
-						<a href="./eligibility.html" class="list-group-item">2. Eligibility <mark>Who can apply</mark></a>
+						<a href="./eligibility.html" class="list-group-item">Eligibility <mark>Who can apply</mark></a>
 					</li>
 					<li class="col-md-4">
-						<a href="./benefit-amount.html" class="list-group-item active">3. How much you could receive</a>
+						<a href="./benefit-amount.html" class="list-group-item cust-active active">How much you could receive</a>
 					</li>
 					<li class="col-md-4">
-						<a href="./apply.html" class="list-group-item">4. Apply</a>
+						<a href="./apply.html" class="list-group-item">Apply</a>
 					</li>
 					<li class="col-md-4">
-						<a href="./after-applying.html" class="list-group-item">6. After you've applied</a>
+						<a href="./after-applying.html" class="list-group-item">After you've applied</a>
 					</li>
 					<li class="col-md-4">
-						<a href="./more-information.html" class="list-group-item">More information <mark>Contact</mark></a>
+						<a href="./special-cirumstances.html" class="list-group-item">Special circumstances</a>
+					</li>
+					<li class="col-md-4">
+						<a href="./more-information-jane.html" class="list-group-item">More information <mark>Contact</mark></a>
 					</li>
 	      </ul>
 	    </div>
@@ -187,21 +190,85 @@
 			<li  >Ei Family supplement</li>
 			<li  >When payments will end</li>
 		</details> -->
-		<p>We can't tell exactly how much you will get until your application is processed, but you can get an estimate of how much you could receive and for how long. Some employers provide additional money while your're on maternity or parental leave. This is called a top-up. Check with your employer to see if this applies to you.</p>
+		<p>We can't tell exactly how much you will get until your application is processed, but you can get an estimate of how much you could receive and for how long.<!--</p>
+		<details>
+		<summary>How we calculate your benefit amounts</summary>
+		<ul>
+		<li><p><b>Maternity benefits</b> are paid at a weekly benefit rate of 55% of your
+		average weekly insurable earnings, up to a maximum amount of $547.
+		You could receive up to 15 weeks of maternity benefits. You can start
+		receiving benefits as early as 12 weeks before your due date or before
+		the actual week you give birth. You cannot receive maternity benefits
+		more than 17 weeks after the week you were expected to give birth or
+		the week you actually gave birth, whichever is later.</p></li>
+
+		<li><p><b>Standard parental benefits</b> are paid at a weekly benefit rate
+		of 55% of your average weekly insurable earnings, up to a maximum
+		amount of $547. You could receive up to 35 weeks of standard
+		parental benefits. If parents share benefits, this increases to 40 weeks.
+		One parent cannot receive more than 35 weeks. These benefits can
+		be paid during the 52 weeks following the week of the the child’s birth or
+		adoption placement date.</p></li>
+
+		<li><p><b>Extended parental benefits</b> are paid at a weekly benefit rate of
+		33% of your average weekly insurable earnings, up to a maximum
+		amount of $328. You could receive up to 61 weeks of extended
+		parental benefits. If parents share benefits, this increases to 69 weeks.
+		One parent cannot receive more than 61 weeks. These benefits can
+		be paid during the 78 weeks following the week of the child’s birth or adoption placement date.</p></li>
+	</ul>
+</details> <p>-->
+		Some employers provide additional money while you're on maternity or parental leave. This is called a top-up. Check with your employer to see if this applies to you.</p>
 
 		<h2>Estimate your payments</h2>
 		<!-- <p>This is intended to give you a sense of how much you could receive. Your actual values could vary, so confirm these details when you apply.</p> -->
 
-		<form action="#">
+
 
 		<!-- We need to make it possible to get the number of weeks but at the same time make it easy for people to get the calculation. -->
 
-		<p>The amount you get depends on your average weekly insurable earnings. Insurable earnings are any income you paid EI premiums on, including tips, bonuses, and commissions. If you earn more than $994.23 per week, you'll get the maximum amount.</p>
+		<p>The amount you get depends on your average weekly insurable earnings. Insurable earnings are any income you paid EI premiums on, including tips, bonuses, and commissions. <!-- If you earn more than $994.23 per week, you'll get the maximum amount. -->
+			<!-- If you'd like to do your own calculations you can see in detail <a href="asf">how we calculate your benefit amounts</a>. -->
+		</p>
 
-		<details>
-		<summary>If your weekly earnings vary</summary>
+<form action="#">
+		<div class="form-group" id="earnmax">
+			<fieldset>
+				<legend>Did you make $51,700 or more over the past year? (If so you'll get the maximum amount)</legend>
+
+				<div class="radio">
+							<label for="max-yes"><input  type="radio" name="makethemax" value="max-yes" id="max-yes" />&#160;&#160;Yes, $51,700 or more</label>
+				</div>
+				<div class="radio">
+							<label for="max-no"><input  type="radio" name="makethemax" value="max-no" id="max-no" />&#160;&#160;No, less than $51,700</label>
+				</div>
+			</fieldset>
+		</div>
+		<!-- <input type="button" name="maxorno" id="maxorno" value="Continue" class="btn"> -->
+
+		<div id="checkforvariableweeks" style="display:none">
+
+		<div class="form-group" id=checkforvariable>
+			<fieldset>
+				<legend>
+					<!-- Do your earnings vary from week to week?  -->
+					Did you make more in some weeks than others?
+				</legend>
+
+				<div class="radio">
+							<label for="vary-no"><input  type="radio" name="varyornot" value="vary-no" id="vary-no" />&#160;&#160;No, I have the same income every week</label>
+				</div>
+				<div class="radio">
+							<label for="vary-yes"><input  type="radio" name="varyornot" value="vary-yes" id="vary-yes" />&#160;&#160;Yes, my income varies from week to week</label>
+				</div>
+			</fieldset>
+		</div>
+		<!-- <input type="button" name="varyorno" id="varyorno" value="Continue" class="btn"> -->
 
 
+		</div>
+
+<div id="getvariableweeks" style="display:none">
 		<p>The average weekly earnings are taken from the weeks where you earned the most, also known as best weeks, over the past year. The number of best weeks to use for the average depends on where you live. Enter your postal code to see how many best weeks to use in your estimate.</p>
 
 		<div class="form-group">
@@ -216,9 +283,9 @@
 
 
 		<div id="askbestweekincome" style="display:none">
-			<p>Now add up your total insurable earnings for your best <span id="u-bestweeks2"></span> weeks. If your earnings increase, you may get more money.</p>
+			<p>Now add up your total insurable earnings for your best <span id="u-bestweeks2"></span> weeks over the past year. If your earnings increase, you may get more money.</p>
 			<div class="formgroup">
-			<label for="earnings">Your total earnings for best <span id="u-bestweeks3"></span> weeks</label><br />
+			<label for="earnings">Total earnings for best <span id="u-bestweeks3"></span> weeks</label><br />
 			<input type="text" id="earnings" size='6'>
 			<input type="button" name="averagecalc" id="averagecalc" value="Get average weekly earnings" class="btn">
 			</div>
@@ -228,10 +295,13 @@
 			<p><b>$<span id="u-totalEarnings"></span></b> divided by <span id="u-bestweeks4"></span> weeks = <br />
 				<big><b>$<span id="u-avgWeekly"></span></b> average weekly earnings</p></big>
 		</div>
-		</details>
+	</div>
+
+	<div id="entersalary" style="display:none">
 		<br />
+		<!-- Maybe we shouldn't even display this if you entered the value... -->
 		<fieldset>
-			<legend>Enter your annual salary <strong>or</strong> your average weekly earnings.</legend>
+			<legend>Enter your annual salary <strong>or</strong> your average weekly earnings</legend>
 		<div class="form-group">
 			<label for="annualincome">Annual salary</label><br />
 			<input type="text" id="annualincome" size='7'>
@@ -241,7 +311,11 @@
 			<label for="weeklyincome">Average weekly earnings</label><br />
 			<input type="text" id="weeklyincome" size='5'> /week
 		</div>
+		<input type="button" name="entered-income" id="entered-income" value="Continue" class="btn">
 		</fieldset>
+	</div><br />
+
+<div id="benefitdetails" style="display:none">
 		<div class="form-group">
 			<fieldset>
 				<legend>Which benefits are you applying for?</legend>
@@ -254,6 +328,7 @@
 			</fieldset>
 		</div>
 
+<div id="parental-details">
 		<div class="form-group">
 			<fieldset>
 				<legend>What type of parental benefits will you take?</legend>
@@ -291,7 +366,7 @@
 			<!-- <p>(Sharing benefits among parents make more weeks of benefits available.)</p> -->
 			<input type="text" id="sharedweeks" size="2" value="">
 		</div>
-
+</div> <!--  Parental details -->
 		<div class="form-group">
 			<label for="startdate">When will you apply? <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
 			<p style="margin-top:-.8em; font-size:0.7em">(This should be the date after your last day at work.)</p>
@@ -299,14 +374,15 @@
 		</div>
 
 		<div style="padding-top:1.5em">
-			<input type="button" name="fbsbmt" id="docalc" value="Get estimate" class="btn btn-success btn-lg" onClick="docalc()">
+			<input type="button" name="fbsbmt" id="docalc" value="Get estimate" class="btn btn-success btn-lg">
 		</div>
+	</div>
 		</form>
 
 		<p></p>
 
 
-		<div id="calcresults" style="display: none">
+		<div id="results" style="display: none">
 		<h3>Estimated results:</h3>
 		<p>This is for <strong>estimation only</strong> based on what you entered above. We can't tell exactly how much you will receive until your application is processed.</p>
 		<ul>
@@ -314,7 +390,7 @@
 		<li>Your maternity benefits are estimated at <b>$514</b><!-- calcmatpayment --> per week.</li>
 			<li>Your 15 weeks of maternity benefits will end about <b>March 29, 2019</b>.<!-- startdate+15weeks --></li>
 			<li>Your regular parental benefits will then begin. Those are estimated at <b>$514</b><!-- calcparpayment -->  per week.</li>
-			<li>You'll get 31 weeks of parental benefits, ending around <b>November 1, 2019</b></li>
+			<li>You can take up to 31 weeks of parental benefits, ending around <b>November 1, 2019</b></li>
 			<li>Other parents have 4 weeks to share and should apply separately.</li>
 			<li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li>
 		</ul>
@@ -356,7 +432,7 @@
 		<p>In regions of Canada with the highest rates of unemployment, we will calculate using the best 14 weeks; in regions of Canada with the lowest rates of unemployment, we will use the best 22 weeks. In other regions, the number of weeks used to calculate benefits will be somewhere between 14 and 22, depending on the unemployment rate in those regions.</p>
 		<h3><mark>Best weeks</mark></h3>
 		<p><mark>Remove above paragraph? Explain best weeks Link to postal code look up?</mark></p> -->
-
+<div id="family-supplement" >
 		<h2 class="h2">If your family income is $25,921 or below</h2>
 
 		<p>If we determine that your net family income is $25,921 or less per year, that you have children, and that you or your spouse receives the Canada Child Benefit, you may be eligible to receive the Family Supplement. It would be applied automatically by Service Canada. No action is required from you.</p>
@@ -366,6 +442,7 @@
 		<li  >your net family income (up to the $25,921 yearly maximum); and</li>
 		<li  >the number of children in your family, and their ages.</li>
 		</ul>
+</div>
 	</div>
 			<div class="clearfix"></div>
 				<nav role="navigation">
@@ -486,16 +563,52 @@
 <!-- <script src="mat-par-estimator.js"></script> -->
 <script>
 
-// Declare variables here so available to other functions...I hope
+// Declare variables here so available to other functions
 var bestweeks;
 var avgWeekly;
+var makeTheMax = false;
 
 $(document).ready(
 	function(){
-			$("#docalc").click(function () {
-					$("#calcresults").show("slow");
-			});
+			$("input[name=makethemax]").on( "change", function() {
+
+          var test = $(this).val();
+
+					if (test == "max-yes") {
+						makeTheMax = true;
+						$("#benefitdetails").show("slow");
+						$("#checkforvariableweeks").hide("slow");
+					} else {
+						makeTheMax = false;
+						$("#benefitdetails").hide("slow");
+						$("#checkforvariableweeks").show("slow");
+					}
+   });
 	});
+
+	$(document).ready(
+		function(){
+			$("input[name=varyornot]").on( "change", function() {
+
+          var test = $(this).val();
+
+					if (test == "vary-no") {
+						$("#entersalary").show("slow");
+						$("#getvariableweeks").hide("slow");
+					} else {
+						$("#getvariableweeks").show("slow");
+						$("#entersalary").hide("slow");
+					}
+				});
+		});
+// Continue after entering salary or best weeks
+		$(document).ready(
+			function(){
+				$("#entered-income").click(function () {
+
+						$("#benefitdetails").show("slow");
+					});
+			});
 
 $(document).ready(
 
@@ -510,7 +623,8 @@ $(document).ready(
 					var userBestWeeks4 = document.getElementById("u-bestweeks4");
 
 					// Take first three chars from pcode.value
-					var pcode = (pcode.slice(0,3));
+					pcode = (pcode.slice(0,3));
+					pcode = (pcode.toUpperCase());
 					//  * -- Do the lookup -- *
 
 					// var bestWeeks;
@@ -550,77 +664,100 @@ $(document).ready(
 						var totalEarnings = document.getElementById("earnings").value;
 						var userTotalEarnings = document.getElementById("u-totalEarnings");
 						var userAvgWeekly = document.getElementById("u-avgWeekly");
+						var userWeeklyIncome = document.getElementById("weeklyincome");
 
 						// Need to clean the user input a bit
 						totalEarnings = totalEarnings.replace(/[^0-9.]/g, "");
 
 
 						avgWeekly = totalEarnings / bestWeeks;
+						avgWeekly = Math.round(avgWeekly * 100) / 100
 
 						userTotalEarnings.innerHTML = totalEarnings;
 						userAvgWeekly.innerHTML = avgWeekly;
 
+					//Set bestweeks so it can be used in the next thing...
+					userWeeklyIncome.value = avgWeekly;
+
 					$("#averageresult").show("slow");
+
+					setTimeout(function(){
+						$("#askbestweekincome").show("slow");
+					},1000);
+					$("#benefitdetails").show("slow");
 				});
 		});
 
-		var month = new Array();
-			month[0] = "January";
-			month[1] = "February";
-			month[2] = "March";
-			month[3] = "April";
-			month[4] = "May";
-			month[5] = "June";
-			month[6] = "July";
-			month[7] = "August";
-			month[8] = "September";
-			month[9] = "October";
-			month[10] = "November";
-			month[11] = "December";
+		$(document).ready(
+			function(){
+					$("#docalc").click(function () {
 
-		var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-		var today = new Date() // This should be the due date they entered...
-		var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
+						var month = new Array();
+							month[0] = "January";
+							month[1] = "February";
+							month[2] = "March";
+							month[3] = "April";
+							month[4] = "May";
+							month[5] = "June";
+							month[6] = "July";
+							month[7] = "August";
+							month[8] = "September";
+							month[9] = "October";
+							month[10] = "November";
+							month[11] = "December";
 
-		var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
-		var currentSeconds = today.getTime();
+						var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+						var today = new Date() // This should be the due date they entered...
+						var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
 
-		var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
+						var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
+						var currentSeconds = today.getTime();
 
-		var matPercent = ".55";
-		var stdParPercent = ".55";
-		var extParPercent = ".33";
+						var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
 
-		var percentVal = "55%"; // could be 33 if extending parental benefits
+						var matPercent = ".55";
+						var stdParPercent = ".55";
+						var extParPercent = ".33";
 
-		var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
+						var percentVal = "55%"; // could be 33 if extending parental benefits
 
-		var futureDate = new Date(futureSeconds);
+						var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
+
+						var futureDate = new Date(futureSeconds);
 
 
-		// The locale should be FR-CA if the page is French
-		// Need to make sure this works in typically tested browsers...
+						// The locale should be FR-CA if the page is French
+						// Need to make sure this works in typically tested browsers...
 
-		// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
+						// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
 
-		// These might work if not...
-		var theyear = futureDate.getFullYear();
-		var themonth = month[futureDate.getMonth()];
-		var thetoday = futureDate.getDate();
+						// These might work if not...
+						var theyear = futureDate.getFullYear();
+						var themonth = month[futureDate.getMonth()];
+						var thetoday = futureDate.getDate();
 
-		var newDate = themonth + " " + thetoday + ", " + theyear;
+						var newDate = themonth + " " + thetoday + ", " + theyear;
 
-		// document.write("Today is " + today + "<br>");
-		// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
-		// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
+						// document.write("Today is " + today + "<br>");
+						// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
+						// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
 
-		document.write("<h2>Estimated calculation</h2>");
-		document.write("<p>If you start your leave on " + dueDate + "<br>");
-		document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
-		document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
+						// document.write("<h2>Estimated calculation</h2>");
+						// document.write("<p>If you start your leave on " + dueDate + "<br>");
+						// document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
+						// document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
+
+
+
+							$("#results").show("slow");
+					});
+			});
+
 
 
 </script>
+
+<script src="https://gc-proto.github.io/ei-mat-parental/scenarioA/js/cannedsearch-querystring.js"></script>
 
 </body>
 </html>
