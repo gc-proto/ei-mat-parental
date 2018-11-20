@@ -123,8 +123,8 @@
 			// find out the filename of the page we're on
 			var currentpage = document.location.pathname.match(/[^\/]+$/)[0];
 
-			// if we're on ut_en.html, warn the moderator that the canned search script won't work
-			if (currentpage = "ut_en.html") {
+			// if we're on template_links.html, warn the moderator that the canned search script won't work
+			if (currentpage = "template_links.html") {
 
 				alert("sessionStorage is not available!  This will prevent the canned search results pages from functioning.");
 
