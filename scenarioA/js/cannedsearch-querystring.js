@@ -4,13 +4,13 @@
 	This script will use watch for a query string variable called "scenario" and put the value in sessionStorage
 
 	Use the scenario links at the top of the prototype to set this variable at the beginning of each scenario test
-		like this:  https://gc-proto.github.io/ei-mat-parental/en.html?scenario=2
+		like this:  https://gc-proto.github.io/ei-mat-parental/scenarioA/en.html?scenario=2
 
 	In this example, the value of the scenario variable is 2.  So the search form, when submitted, will point to:
-		https://gc-proto.github.io/ei-mat-parental/search-results-2.html
+		https://gc-proto.github.io/ei-mat-parental/scenarioA/search-results-2.html
 
 		If this script doesn't work, or if no value is specified, the search form will default to:
-			https://gc-proto.github.io/ei-mat-parental/search-results.html
+			https://gc-proto.github.io/ei-mat-parental/scenarioA/search-results.html
 
 	When the scenario variable is spotted in the query string, its value will be stored in sessionStorage and replace whatever old value might already be in there.  This value will persist until the browser window is closed.
 
@@ -80,7 +80,7 @@
 
 					// alert("scenario: " + scenario);
 
-					window.location.href = "https://gc-proto.github.io/ei-mat-parental/search-results-" + scenario + ".html";
+					window.location.href = "https://gc-proto.github.io/ei-mat-parental/scenarioA/search-results-" + scenario + ".html";
 
 					// tell the form not to do whatever the HTML code was telling it to do
 					event.preventDefault();
@@ -105,7 +105,7 @@
 
 						// alert("scenario: " + scenario);
 
-						window.location.href = "https://gc-proto.github.io/ei-mat-parental/search-results-" + scenario + ".html";
+						window.location.href = "https://gc-proto.github.io/ei-mat-parental/scenarioA/search-results-" + scenario + ".html";
 
 						// tell the form not to do whatever the HTML code was telling it to do
 						event.preventDefault();
@@ -123,7 +123,7 @@
 			// find out the filename of the page we're on
 			var currentpage = document.location.pathname.match(/[^\/]+$/)[0];
 
-			// if we're on template_links.html, warn the moderator that the canned search script won't work
+			// if we're on ut_en.html, warn the moderator that the canned search script won't work
 			if (currentpage = "ut_en.html") {
 
 				alert("sessionStorage is not available!  This will prevent the canned search results pages from functioning.");
