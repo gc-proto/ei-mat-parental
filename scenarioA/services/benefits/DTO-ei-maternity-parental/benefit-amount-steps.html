@@ -191,7 +191,7 @@
 			<li  >When payments will end</li>
 		</details> -->
 		<p>
-			Answer some questions to estimate your weekly payments and how long you'll get benefits. (We can't tell exactly how much you will get until your application is processed.)
+			Answer some questions to estimate your weekly payments and how long you'll get benefits. (When you apply, we'll calculate exactly how much you will get.)
 		</p>
 		<details>
 		<summary>How we calculate your benefit amounts</summary>
@@ -219,23 +219,35 @@
 		One parent cannot receive more than 61 weeks. These benefits can
 		be paid during the 78 weeks following the week of the child’s birth or adoption placement date.</p></li>
 	</ul>
+	<div id="family-supplement" >
+			<h2 class="h2">If your family income is $25,921 or below</h2>
+
+			<p>If we determine that your net family income is $25,921 or less per year, that you have children, and that you or your spouse receives the Canada Child Benefit, you may be eligible to receive the Family Supplement. It would be applied automatically by Service Canada. No action is required from you.</p>
+
+			<p>The amount of Family Supplement you receive depends on:</p>
+			<ul>
+			<li  >your net family income (up to the $25,921 yearly maximum); and</li>
+			<li  >the number of children in your family, and their ages.</li>
+			</ul>
+	</div>
 </details>
 
-		<h3>Payments and leave dates</h3>
+		<!-- <h3>Payments and leave dates</h3> -->
 		<!-- <p>This is intended to give you a sense of how much you could receive. Your actual values could vary, so confirm these details when you apply.</p> -->
 
 
 
 		<!-- We need to make it possible to get the number of weeks but at the same time make it easy for people to get the calculation. -->
 
-		<p>The amount you get depends on your average weekly insurable earnings. Insurable earnings are any income you paid EI premiums on, including tips, bonuses, and commissions. <!-- If you earn more than $994.23 per week, you'll get the maximum amount. -->
-			<!-- If you'd like to do your own calculations you can see in detail <a href="asf">how we calculate your benefit amounts</a>. -->
-		</p>
+		<!-- <p>The amount you get depends on your average weekly insurable earnings. Insurable earnings are any income you paid EI premiums on, including tips, bonuses, and commissions.
+		 If you earn more than $994.23 per week, you'll get the maximum amount.
+			If you'd like to do your own calculations you can see in detail <a href="asf">how we calculate your benefit amounts</a>.
+		</p> -->
 
 <form action="#">
 		<div class="form-group" id="earnmax">
 			<fieldset>
-				<legend>Did you make $51,700 or more over the past year? (If so you'll get the maximum amount)</legend>
+				<legend>Did you make $51,700 or more over the past year? (only include insurable earnings - income you paid EI premiums on, including tips, bonuses, and commissions)</legend>
 
 				<div class="radio">
 							<label for="max-yes"><input  type="radio" name="makethemax" value="max-yes" id="max-yes" />&#160;&#160;Yes, $51,700 or more</label>
@@ -244,6 +256,8 @@
 							<label for="max-no"><input  type="radio" name="makethemax" value="max-no" id="max-no" />&#160;&#160;No, less than $51,700</label>
 				</div>
 			</fieldset>
+			<br />
+			<input type="button" name="continue-max" id="continue-max" value="Continue" class="btn">
 		</div>
 		<!-- <input type="button" name="maxorno" id="maxorno" value="Continue" class="btn"> -->
 
@@ -347,9 +361,10 @@
 							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Shared extended parental (up to 69 weeks at a maximum of $328)</label>
 				</div> -->
 			</fieldset>
+			<input type="button" name="continue-leavetype" id="continue-leavetype" value="Continue" class="btn btn-success btn-lg">
 		</div>
 
-		<div class="form-group">
+		<div class="form-group" id="will-you-share" style="display:none">
 			<fieldset>
 				<legend>Will you be sharing parental benefits?</legend>
 
@@ -434,17 +449,7 @@
 		<p>In regions of Canada with the highest rates of unemployment, we will calculate using the best 14 weeks; in regions of Canada with the lowest rates of unemployment, we will use the best 22 weeks. In other regions, the number of weeks used to calculate benefits will be somewhere between 14 and 22, depending on the unemployment rate in those regions.</p>
 		<h3><mark>Best weeks</mark></h3>
 		<p><mark>Remove above paragraph? Explain best weeks Link to postal code look up?</mark></p> -->
-<div id="family-supplement" >
-		<h2 class="h2">If your family income is $25,921 or below</h2>
 
-		<p>If we determine that your net family income is $25,921 or less per year, that you have children, and that you or your spouse receives the Canada Child Benefit, you may be eligible to receive the Family Supplement. It would be applied automatically by Service Canada. No action is required from you.</p>
-
-		<p>The amount of Family Supplement you receive depends on:</p>
-		<ul>
-		<li  >your net family income (up to the $25,921 yearly maximum); and</li>
-		<li  >the number of children in your family, and their ages.</li>
-		</ul>
-</div>
 	</div>
 			<div class="clearfix"></div>
 				<nav role="navigation">
@@ -568,22 +573,27 @@
 // Declare variables here so available to other functions
 var bestweeks;
 var avgWeekly;
+var leaveType;
 var makeTheMax = false;
 
 $(document).ready(
 	function(){
 			$("input[name=makethemax]").on( "change", function() {
-
+					alert("hi");
           var test = $(this).val();
 
 					if (test == "max-yes") {
+
 						makeTheMax = true;
 						$("#benefitdetails").show("slow");
 						$("#checkforvariableweeks").hide("slow");
+						$("#continue-max").hide();
 					} else {
+
 						makeTheMax = false;
 						$("#benefitdetails").hide("slow");
 						$("#checkforvariableweeks").show("slow");
+						$("#continue-max").hide();
 					}
    });
 	});
@@ -609,8 +619,24 @@ $(document).ready(
 				$("#entered-income").click(function () {
 
 						$("#benefitdetails").show("slow");
+						$("#entered-income").show();
 					});
 			});
+// Continue after choosing leave option
+$(document).ready(
+function(){
+		$("input[name=continue-leavetype]").on( "change", function() {
+
+				var test = $(this).val();
+
+				if (test == "standard") {
+					leaveType = "standard";
+					$("#will-you-share").show("slow");
+				} else {
+					leaveType = "extended";
+					$("#will-you-share").show("slow");
+				}
+ });
 
 $(document).ready(
 
