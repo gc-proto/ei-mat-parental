@@ -274,6 +274,22 @@ abbr {
 	margin-left: 50px;
 }
 
+tr td li {
+	font-size: 19px !important;
+	line-height: 28px !important;
+	list-style-type: disc !important;
+	margin-left: 10px !important;
+	margin-right: 0px !important;
+}
+
+
+.example li {
+	font-size: 19px !important;
+	line-height: 28px !important;
+	list-style-type: none !important;
+
+}
+
 .bullet {
 
 
