@@ -140,9 +140,17 @@
 
 
 	    <h1 property="name" id="wb-cont" dir="ltr">
-	EI Maternity and Parental Benefits - Estimate your benefits</h1>
+	EI maternity and parental benefits - Estimate your benefits</h1>
 
+	<section id="archived" class="wb-inv alert alert-warning wb-inview" data-inview="archived-bnr">
 
+</section>
+<section id="archived-bnr" class="wb-overlay modal-content overlay-def wb-bar-t">
+<header>
+<h2 class="wb-inv">Archived</h2>
+</header>
+<p><a href="#archived">This is page is in lockdown for review - deadline November 27th: 2:00PM - estimate button will be fixed Monday AM</a></p>
+</section>
 
 
 	        <div><div class="mwsgeneric-base-html parbase section">
@@ -150,8 +158,8 @@
 
 
 	    <div>
-	  <div class="mrgn-tp-md mrgn-bttm-lg brdr-bttm">
-	    <div class="row">
+	  <div class="mrgn-tp-md mrgn-bttm-sm brdr-bttm">
+	    <div class="row mrgn-bttm-sm">
 	      <ul class="toc lst-spcd col-md-12">
 					<li class="col-md-4">
 						<a href="./ei-maternity-parental.html" class="list-group-item">What these benefits offer</a>
@@ -171,7 +179,7 @@
 					<li class="col-md-4">
 						<a href="./special-circumstances.html" class="list-group-item">Special circumstances</a>
 					</li>
-			
+
 	      </ul>
 	    </div>
 	  </div>
@@ -248,7 +256,7 @@
 							<label for="matandparental"><input checked="checked" type="checkbox" name="matorpar" value="matandparental" id="matandparental" />&#160;&#160;Maternity (for the person giving birth only)</label>
 				</div>
 				<div class="checkbox">
-							<label for="parentalonly"><input checked="checked" type="checkbox" name="matorpar" value="parentalonly" id="parentalonly" />&#160;&#160;Parental (for parents)</label>
+							<label for="parentalonly"><input checked="checked" type="checkbox" name="matorpar" value="parentalonly" id="parentalonly" />&#160;&#160;Parental (for any parent)</label>
 				</div>
 			</fieldset>
 		</div>
@@ -258,13 +266,13 @@
 				<legend>What type of parental benefits will you take?</legend>
 
 				<div class="radio">
-							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard parental (up to 35 weeks + 5 if shared, up to $547 per week)</label>
+							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard parental (up to 35 weeks + 5 if sharing, maximum $547 per week)</label>
 				</div>
 				<!-- <div class="radio">
 							<label for="sharedparental"><input  type="radio" name="leavetype" value="sharedparental" id="sharedparental" />&#160;&#160;Shared parental (up to 40 weeks at a maximum of $547)</label>
 				</div> -->
 				<div class="radio">
-							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended parental (up to 61 weeks + 8 if shared, up to $328 per week)</label>
+							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended parental (up to 61 weeks + 8 if sharing, maximum $328 per week)</label>
 				</div>
 				<!-- <div class="radio">
 							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Shared extended parental (up to 69 weeks at a maximum of $328)</label>
@@ -272,7 +280,7 @@
 			</fieldset>
 		</div>
 
-		<div class="form-group">
+		<!-- not needed with week <div class="form-group">
 			<fieldset>
 				<legend>Will you be sharing parental benefits?</legend>
 
@@ -283,12 +291,12 @@
 							<label for="extended"><input  type="radio" name="willushare" value="no" id="no" />&#160;&#160;No</label>
 				</div>
 			</fieldset>
-		</div>
+		</div> -->
 
 		<div class="form-group">
-			<legend>How many weeks of parental leave will you share?</legend>
+			<legend>How many weeks of parental leave will your partner take?</legend>
 			<!-- <p>(Sharing benefits among parents make more weeks of benefits available.)</p> -->
-			<input type="text" id="sharedweeks" size="2" value="">
+			<input type="text" id="sharedweeks" size="2" value="&nbsp;0">
 		</div>
 
 		<div class="form-group">
@@ -354,16 +362,7 @@
 
 <p>To <a href="#bestweeks">find out your best weeks.</a></p>
 
-	<h3 class="h4">If your income varies from week to week</h3>
-	<p>Your average weekly earnings are taken from the weeks where you earned the most, also known as best weeks, over the past year. The number of best weeks to use for the average depends on where you live. Enter your postal code to see how many best weeks to use in your estimate.</p>
-	<div class="form-group">
-		<label for="postalcode-2">Postal code</label><br />
-		<input type="text" id="postalcode-2" size='7' maxlength="7">
-		<input type="button" name="postalcheck-2" id="postalcheck-2" value="Get best weeks" class="btn">
-	</div>
-	<div id="bestweeksresult2"  >
-		<p>For <b><span id="u-pcode2"></span></b>, we use the average of your best <b><span id="u-bestweeks2"></span></b> weeks.</p>
-	</div>
+
 
 	<div id="family-supplement" >
 			<h3 class="h4">If your family income is $25,921 or below</h3>
