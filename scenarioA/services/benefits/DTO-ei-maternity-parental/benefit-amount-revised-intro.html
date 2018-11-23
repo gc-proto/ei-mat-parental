@@ -181,9 +181,18 @@
 	<div class="col-md-8">
 	<h2 class="mrgn-tp-0">
 	Estimate your benefits</h2>
-		<!-- <p>
+<!-- <details><summary>Objectives</summary>
+<ul>
+			<li  >How benefits are calculated</li>
+			<li  >Employer top-up</li>
+			<li  >Explain insurable earnings</li>
+			<li  >Estimator + variable best weeks disclaimer</li>
+			<li  >Ei Family supplement</li>
+			<li  >When payments will end</li>
+		</details> -->
+		<p>
 			You can get weekly benefit payments during your maternity and/or parental leave.
-		</p> -->
+		</p>
 		<!-- <p>
 			How many weeks of benefits you get depends on what leave options you choose. How much money you get depends on:
 			<ul>
@@ -192,9 +201,9 @@
 		</ul></p> -->
 
 		<p>
-			How many weeks of benefits you get depends on what leave options you choose. How much money you get depends on your insurable earnings over the past 52 weeks, before taxes. ("Insurable" means income you paid EI premiums on, including tips, bonuses, and commissions) </p>
+			How many weeks of benefits you get depends on what leave options you choose. How much money you get depends on your insurable earnings over the past 52 weeks, before taxes. </p>
 
-			<p>If you earn more in some weeks than others, the calculation is based on the weeks you made the most, known as your best weeks.
+			<p>If you earn more in some weeks than others, the calculation is based on the weeks you made the most over the past year. This is known as your best weeks.
 				<!-- If you earn more than $994.23 per week on average, you'll get the maximum amount. -->
 			</p>
 
@@ -224,15 +233,12 @@
 		One parent cannot receive more than 61 weeks. These benefits can
 		be paid during the 78 weeks following the week of the child’s birth or adoption placement date.</p></li>
 	</ul>
-	<h3 class="h4">If your income varies from week to week</h3>
-	<p>Your average weekly earnings are taken from the weeks where you earned the most, also known as best weeks, over the past year. The number of best weeks to use for the average depends on where you live. Enter your postal code to see how many best weeks to use in your estimate.</p>
+	<h3 class="h4">Your best weeks</h3>
+	<p>The average weekly earnings are taken from the weeks where you earned the most, also known as best weeks, over the past year. The number of best weeks to use for the average depends on where you live. Enter your postal code to see how many best weeks to use in your estimate.</p>
 	<div class="form-group">
-		<label for="postalcode-2">Postal code</label><br />
-		<input type="text" id="postalcode-2" size='7' maxlength="7">
-		<input type="button" name="postalcheck-2" id="postalcheck-2" value="Get best weeks" class="btn">
-	</div>
-	<div id="bestweeksresult2" style="display:none">
-		<p>For <b><span id="u-pcode2"></span></b>, we use the average of your best <b><span id="u-bestweeks2"></span></b> weeks.</p>
+		<label for="postalcode">Postal code</label><br />
+		<input type="text" id="postalcode" size='7' maxlength="7">
+		<input type="button" name="postalcheck" id="postalcheck" value="Get best weeks" class="btn">
 	</div>
 
 	<div id="family-supplement" >
@@ -254,18 +260,18 @@
 <form action="#">
 		<div class="form-group" id="earnmax">
 			<fieldset>
-				<legend style="padding-top:0em">Your earnings over the past 52 weeks (before taxes)</legend>
+				<legend style="padding-top:.5em">Did you make $51,700 or more in insurable earnings over the past year? ("Insurable" means income you paid EI premiums on, including tips, bonuses, and commissions.)</legend>
 
-				<div class="form-group">
-
-					<input type="text" id="annual-income" size='8'>
-
+				<div class="radio">
+							<label for="max-yes"><input  type="radio" name="makethemax" value="max-yes" id="max-yes" />&#160;&#160;Yes, I made $51,700 or more</label>
 				</div>
-
+				<div class="radio">
+							<label for="max-no"><input  type="radio" name="makethemax" value="max-no" id="max-no" />&#160;&#160;No, I made less than $51,700</label>
+				</div>
 			</fieldset>
-			<div id="continue-income">
+			<div id="continue-max">
 			<br />
-			<input type="button" name="continue-button-income" id="continue-button-income" value="Continue" class="btn btn-success btn-lg">
+			<input type="button" name="continue-button-max" id="continue-button-max" value="Continue" class="btn btn-success btn-lg">
 		</div>
 		</div>
 		<!-- <input type="button" name="maxorno" id="maxorno" value="Continue" class="btn"> -->
@@ -291,19 +297,18 @@
 			<input type="button" name="continue-button-varyornot" id="continue-button-varyornot" value="Continue" class="btn btn-success btn-lg">
 			</div>
 		</div>
+
+
+
 		</div>
 
 <div id="getvariableweeks" style="display:none">
-		<p>Your average weekly earnings are taken from the weeks where you earned the most over the past year. These are called your best weeks. The number of best weeks to use for the average depends on where you live. </p>
+		<p>The average weekly earnings are taken from the weeks where you earned the most, also known as best weeks, over the past year. The number of best weeks to use for the average depends on where you live. Enter your postal code to see how many best weeks to use in your estimate.</p>
 
 		<div class="form-group">
-
-			<legend>Your postal code</legend>
+			<label for="postalcode">Postal code</label><br />
 			<input type="text" id="postalcode" size='7' maxlength="7">
-		</div>
-
-		<div id="continue-postalcheck">
-			<input type="button" name="postalcheck" id="postalcheck" value="Continue" class="btn btn-success btn-lg">
+			<input type="button" name="postalcheck" id="postalcheck" value="Get best weeks" class="btn">
 		</div>
 
 		<div id="bestweeksresult" style="display:none">
@@ -316,13 +321,8 @@
 			<div class="formgroup">
 			<label for="earnings">Total earnings for best <span id="u-bestweeks3"></span> weeks</label><br />
 			<input type="text" id="earnings" size='6'>
+			<input type="button" name="averagecalc" id="averagecalc" value="Get average weekly earnings" class="btn">
 			</div>
-
-			<div id="continue-bestweekearning">
-				<br />
-				<input type="button" name="averagecalc" id="averagecalc" value="Continue" class="btn btn-success btn-lg">
-			</div>
-
 		</div>
 
 		<div id="averageresult" style="display:none ">
@@ -335,10 +335,14 @@
 		<br />
 		<!-- Maybe we shouldn't even display this if you entered the value... -->
 		<fieldset>
-			<legend>Enter your average weekly earnings</legend>
-
+			<legend>Enter your annual salary <strong>or</strong> your average weekly earnings</legend>
 		<div class="form-group">
-
+			<label for="annualincome">Annual salary</label><br />
+			<input type="text" id="annualincome" size='7'>
+		</div>
+		<p>Or</p>
+		<div class="form-group">
+			<label for="weeklyincome">Average weekly earnings</label><br />
 			<input type="text" id="weeklyincome" size='5'> /week
 		</div>
 		<div id="entered-income-div">
@@ -367,10 +371,10 @@
 				<legend>What type of parental benefits will you take?</legend>
 
 				<div class="radio">
-							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard (up to 35 weeks + 5 if shared, up to $547 per week)</label>
+							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard parental (up to 35 weeks + 5 if shared, up to $547 per week)</label>
 				</div>
 				<div class="radio">
-							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended (up to 61 weeks + 8 if shared, up to $328 per week)</label>
+							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended parental (up to 61 weeks + 8 if shared, up to $328 per week)</label>
 				</div>
 			</fieldset>
 			<div id="continue-leavetype">
@@ -384,10 +388,10 @@
 				<legend>Will you be sharing parental benefits?</legend>
 
 				<div class="radio">
-							<label for="share-yes"><input  type="radio" name="willushare" value="share-yes" id="share-yes" />&#160;&#160;Yes</label>
+							<label for="yes"><input  type="radio" name="willushare" value="yes" id="share-yes" />&#160;&#160;Yes</label>
 				</div>
 				<div class="radio">
-							<label for="share-no"><input  type="radio" name="willushare" value="share-no" id="share-no" />&#160;&#160;No</label>
+							<label for="no"><input  type="radio" name="willushare" value="no" id="share-no" />&#160;&#160;No</label>
 				</div>
 			</fieldset>
 			<div id="continue-willushare">
@@ -605,19 +609,31 @@ var leaveType;
 var makeTheMax = false;
 var weeksShared;
 
+$(document).ready(
+	function(){
+			$("input[name=makethemax]").on( "change", function() {
 
+          var test = $(this).val();
 
-	// Continue after entering salary
-	$(document).ready(
-		function(){
-			$("#continue-button-income").click(function () {
-					// This also needs to capture the value of the income...
+					if (test == "max-yes") {
 
-					$("#checkforvariableweeks").show("slow");
-					$("#continue-income").hide();
+						makeTheMax = true;
+						$("#benefitdetails").show("slow");
+						$("#checkforvariableweeks").hide("slow");
+						$("#continue-max").hide();
+						$("#getvariableweeks").hide();
+						$("#results").hide();
+					} else {
 
-				});
-		});
+						makeTheMax = false;
+						$("#benefitdetails").hide("slow");
+						$("#checkforvariableweeks").show("slow");
+						$("#continue-max").hide();
+						$("#getvariableweeks").hide();
+						$("#results").hide();
+					}
+   });
+	});
 
 		$(document).ready(
 			function(){
@@ -626,17 +642,27 @@ var weeksShared;
 						var test = $(this).val();
 
 						if (test == "vary-no") {
-							$("#benefitdetails").show("slow");
+							$("#entersalary").show("slow");
 							$("#continue-varyornot").hide();
 							$("#getvariableweeks").hide("slow");
 						} else {
 							$("#getvariableweeks").show("slow");
 							$("#continue-varyornot").hide();
-							$("#benefitdetails").hide("slow");
+							$("#entersalary").hide("slow");
 						}
 					});
 			});
+	// Continue after entering salary or best weeks
+	$(document).ready(
+		function(){
+			$("#entered-income").click(function () {
+					// This also needs to capture the value of the income...
 
+					$("#benefitdetails").show("slow");
+					$("#entered-income-div").hide();
+					$("#entered-income").show();
+				});
+		});
 	// Continue after choosing leave option
 	$(document).ready(
 		function(){
@@ -663,14 +689,13 @@ var weeksShared;
 						 var test = $(this).val();
 
 						 if (test == "share-yes") {
-
+							 leaveType = "standard";
 							 $("#howmuchtoshare").show("slow");
-							 $("#whentoapply").hide("slow");
 							 $("#continue-willushare").hide();
 						 } else {
+							 leaveType = "no";
 							 $("#whentoapply").show("slow");
-							 $("#howmuchtoshare").hide();
-							 $("#continue-willushare").hide("slow");
+							 $("#continue-willushare").hide();
 						 }
 			});
 		});
@@ -685,32 +710,6 @@ var weeksShared;
 
 						});
 			});
-
-//postal check
-$(document).ready(
-
-		function(){
-				$("#postalcheck-2").click(function () {
-
-					var pcode = document.getElementById("postalcode-2").value;
-					var userPcode = document.getElementById("u-pcode2");
-					var userBestWeeks = document.getElementById("u-bestweeks2");
-					var bestWeeks2;
-
-					// Take first three chars from pcode.value
-					pcode = (pcode.slice(0,3));
-					pcode = (pcode.toUpperCase());
-					//  * -- Do the lookup -- *
-
-					bestWeeks2 = 20;
-
-					userPcode.innerHTML = pcode;
-					userBestWeeks.innerHTML = bestWeeks2;
-
-					$("#bestweeksresult2").show("slow");
-
-									});
-							});
 
 	$(document).ready(
 
@@ -748,8 +747,6 @@ $(document).ready(
 						userBestWeeks3.innerHTML = bestWeeks;
 						userBestWeeks4.innerHTML = bestWeeks;
 
-						$("#continue-postalcheck").hide();
-
 						$("#bestweeksresult").show("slow");
 
 						// Now wait a beat and pose the next question
@@ -761,7 +758,6 @@ $(document).ready(
 
 										});
 								});
-
 	$(document).ready(
 			function(){
 					$("#averagecalc").click(function () {
@@ -785,7 +781,6 @@ $(document).ready(
 						userWeeklyIncome.value = avgWeekly;
 
 						$("#averageresult").show("slow");
-						$("#continue-bestweekearning").hide();
 
 						setTimeout(function(){
 							$("#askbestweekincome").show("slow");
