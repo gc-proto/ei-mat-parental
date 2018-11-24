@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
@@ -251,8 +250,6 @@
 		<p>
 			Answer a few questions to estimate your weekly payments and how long you will get them. When you apply, we'll calculate exactly how much you will get.
 		</p>
-
-
 <form action="#">
 		<div class="form-group" id="earnmax">
 			<fieldset>
@@ -369,10 +366,10 @@
 				<legend>What type of parental benefits will you take?</legend>
 
 				<div class="radio">
-							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard (up to 35 weeks + 5 if sharing, maximum $547 per week)</label>
+							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard (up to $547 per week, up to 35 weeks, or 40 if shared)</label>
 				</div>
 				<div class="radio">
-							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended (up to 61 weeks, + 8 if sharing, maximum $328 per week)</label>
+							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended (up to $328 per week, up to 61 weeks, or 69 if shared)</label>
 				</div>
 			</fieldset>
 			<div id="continue-leavetype">
@@ -453,29 +450,21 @@
 		<!--
 		<h3>Maternity benefits</h3>
 		<p>Maternity benefits can only be claimed by the biological mother. For most people, EI maternity benefits are 55% of your average insurable weekly earnings, up to $547 per week. ("Insurable" earnings mean income you paid EI premiums on.)</p>
-
 		<h3>Parental benefts</h3>
-
 		<p>Parental benefits can all be used by one parent or shared among parents. You'll get more benefits if you share them. You can choose standard or extended benefits.</p>
-
 		<p><b>Standard parental benefits</b> last up to 35 weeks and are 55% of your average insurable weekly earnings, up to a $547 per week.</p>
-
 		<p><b>Extended parental benefits</b> last up 61 weeks and are 33% of your average weekly insurable earnings, up to $328 per week. This amount can be increased if you are eligible to receive the <a href="#supplement">Family Supplement</a>.</p>
-
 		<p>If you share your parental benefits, the total increases to 39 weeks for regular benefits and 69 weeks for extended benefits.</p> -->
 
 		<!--
 		<h2 class="h2">Calculation of benefits</h2>
-
 		<p>The amount of weekly benefits is calculated as follows:</p>
 		<p><mark>Replace with Wizard? Replace with "estimator"?</mark></p>
-
 		<ul>
 		<li  >We calculate your total insurable earnings for the required number of best weeks (the weeks that you earned the most money, including insurable tips and commissions) based on the information you provide and/or your Record(s) of Employment</li>
 		<li  >We divide your total insurable earnings for your best weeks by your required number of best weeks</li>
 		<li  >We then multiply the result by 55% for maternity benefits and for standard parental benefits or by 33% for extended parental benefits to obtain the amount of your weekly benefits</li>
 		</ul>
-
 		<p>In regions of Canada with the highest rates of unemployment, we will calculate using the best 14 weeks; in regions of Canada with the lowest rates of unemployment, we will use the best 22 weeks. In other regions, the number of weeks used to calculate benefits will be somewhere between 14 and 22, depending on the unemployment rate in those regions.</p>
 		<h3><mark>Best weeks</mark></h3>
 		<p><mark>Remove above paragraph? Explain best weeks Link to postal code look up?</mark></p> -->
@@ -599,34 +588,25 @@
 <script src="../../../js/megamenu-loader.js"></script>
 <!-- <script src="mat-par-estimator.js"></script> -->
 <script>
-
 // Declare variables here so available to other functions
 var bestweeks;
 var avgWeekly;
 var leaveType;
 var makeTheMax = false;
 var weeksShared;
-
-
-
 	// Continue after entering salary
 	$(document).ready(
 		function(){
 			$("#continue-button-income").click(function () {
 					// This also needs to capture the value of the income...
-
 					$("#checkforvariableweeks").show("slow");
 					$("#continue-income").hide();
-
 				});
 		});
-
 		$(document).ready(
 			function(){
 				$("input[name=varyornot]").on( "change", function() {
-
 						var test = $(this).val();
-
 						if (test == "vary-no") {
 							$("#benefitdetails").show("slow");
 							$("#continue-varyornot").hide();
@@ -638,14 +618,11 @@ var weeksShared;
 						}
 					});
 			});
-
 	// Continue after choosing leave option
 	$(document).ready(
 		function(){
 				$("input[name=leavetype]").on( "change", function() {
-
 						var test = $(this).val();
-
 						if (test == "standard") {
 							leaveType = "standard";
 							$("#will-you-share").show("slow");
@@ -657,15 +634,11 @@ var weeksShared;
 						}
 		 });
 	 });
-
 	 $(document).ready(
 		 function(){
 				 $("input[name=willushare]").on( "change", function() {
-
 						 var test = $(this).val();
-
 						 if (test == "share-yes") {
-
 							 $("#howmuchtoshare").show("slow");
 							 $("#whentoapply").hide("slow");
 							 $("#continue-willushare").hide();
@@ -676,130 +649,93 @@ var weeksShared;
 						 }
 			});
 		});
-
 		//continue after choosing how many weeks to share
 		$(document).ready(
 				function(){
 						$("#continue-button-howmuchtoshare").click(function () {
-
 							$("#whentoapply").show("slow");
 							$("#continue-howmuchtoshare").hide();
-
 						});
 			});
-
 //postal check
 $(document).ready(
-
 		function(){
 				$("#postalcheck-2").click(function () {
-
 					var pcode = document.getElementById("postalcode-2").value;
 					var userPcode = document.getElementById("u-pcode2");
 					var userBestWeeks = document.getElementById("u-bestweeks2");
 					var bestWeeks2;
-
 					// Take first three chars from pcode.value
 					pcode = (pcode.slice(0,3));
 					pcode = (pcode.toUpperCase());
 					//  * -- Do the lookup -- *
-
 					bestWeeks2 = 20;
-
 					userPcode.innerHTML = pcode;
 					userBestWeeks.innerHTML = bestWeeks2;
-
 					$("#bestweeksresult2").show("slow");
-
 									});
 							});
-
 	$(document).ready(
-
 			function(){
 					$("#postalcheck").click(function () {
-
 						var pcode = document.getElementById("postalcode").value;
 						var userPcode = document.getElementById("u-pcode");
 						var userBestWeeks = document.getElementById("u-bestweeks");
 						var userBestWeeks2 = document.getElementById("u-bestweeks2");
 						var userBestWeeks3 = document.getElementById("u-bestweeks3");
 						var userBestWeeks4 = document.getElementById("u-bestweeks4");
-
 						// Take first three chars from pcode.value
 						pcode = (pcode.slice(0,3));
 						pcode = (pcode.toUpperCase());
 						//  * -- Do the lookup -- *
-
 						// var bestWeeks;
-
 						// For this to work, you'd have to take the table at http://srv129.services.gc.ca/eiregions/eng/rates_cur.aspx and
 						// map every postal code to one of those places. Then you can scrape the file daily or whatever to get the current
 						// value for each. I guess...
-
 						// Load the external datafile
 						// Find pcode in the prefixes
 						// use that to find the region
-
 						// For now we'll just fake it...
 						bestWeeks = 20;
-
 						userPcode.innerHTML = pcode;
 						userBestWeeks.innerHTML = bestWeeks;
 						userBestWeeks2.innerHTML = bestWeeks;
 						userBestWeeks3.innerHTML = bestWeeks;
 						userBestWeeks4.innerHTML = bestWeeks;
-
 						$("#continue-postalcheck").hide();
-
 						$("#bestweeksresult").show("slow");
-
 						// Now wait a beat and pose the next question
 						setTimeout(function(){
 							$("#askbestweekincome").show("slow");
 						},1000);
-
-
-
 										});
 								});
-
 	$(document).ready(
 			function(){
 					$("#averagecalc").click(function () {
-
 							var totalEarnings = document.getElementById("earnings").value;
 							var userTotalEarnings = document.getElementById("u-totalEarnings");
 							var userAvgWeekly = document.getElementById("u-avgWeekly");
 							var userWeeklyIncome = document.getElementById("weeklyincome");
-
 							// Need to clean the user input a bit
 							totalEarnings = totalEarnings.replace(/[^0-9.]/g, "");
-
-
 							avgWeekly = totalEarnings / bestWeeks;
 							avgWeekly = Math.round(avgWeekly * 100) / 100
-
 							userTotalEarnings.innerHTML = totalEarnings;
 							userAvgWeekly.innerHTML = avgWeekly;
-
 						//Set bestweeks so it can be used in the next thing...
 						userWeeklyIncome.value = avgWeekly;
-
 						$("#averageresult").show("slow");
 						$("#continue-bestweekearning").hide();
-
 						setTimeout(function(){
 							$("#askbestweekincome").show("slow");
 						},1000);
 						$("#benefitdetails").show("slow");
 					});
 			});
-
 			$(document).ready(
 				function(){
 						$("#docalc").click(function () {
-
 							var month = new Array();
 								month[0] = "January";
 								month[1] = "February";
@@ -813,56 +749,36 @@ $(document).ready(
 								month[9] = "October";
 								month[10] = "November";
 								month[11] = "December";
-
 							var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 							var today = new Date() // This should be the due date they entered...
 							var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
-
 							var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
 							var currentSeconds = today.getTime();
-
 							var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
-
 							var matPercent = ".55";
 							var stdParPercent = ".55";
 							var extParPercent = ".33";
-
 							var percentVal = "55%"; // could be 33 if extending parental benefits
-
 							var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
-
 							var futureDate = new Date(futureSeconds);
-
-
 							// The locale should be FR-CA if the page is French
 							// Need to make sure this works in typically tested browsers...
-
 							// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
-
 							// These might work if not...
 							var theyear = futureDate.getFullYear();
 							var themonth = month[futureDate.getMonth()];
 							var thetoday = futureDate.getDate();
-
 							var newDate = themonth + " " + thetoday + ", " + theyear;
-
 							// document.write("Today is " + today + "<br>");
 							// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
 							// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
-
 							// document.write("<h2>Estimated calculation</h2>");
 							// document.write("<p>If you start your leave on " + dueDate + "<br>");
 							// document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
 							// document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
-
-
-
 								$("#results").show("slow");
 						});
 				});
-
-
-
 </script>
 
 <script src="https://gc-proto.github.io/ei-mat-parental/scenarioA/js/cannedsearch-querystring.js"></script>
