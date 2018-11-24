@@ -203,7 +203,7 @@
 
 
 
-					<details>
+					<details> <!-- best weeks -->
 					<summary>If your weekly earnings vary or your income has changed</summary>
 
 
@@ -233,7 +233,7 @@
 						<p><b>$<span id="u-totalEarnings"></span></b> divided by <span id="u-bestweeks4"></span> weeks = <br />
 							<big><b>$<span id="u-avgWeekly"></span></b> average weekly earnings</p></big>
 					</div>
-					</details>
+				</details> <!-- best weeks -->
 
 
 		<br />
@@ -334,6 +334,8 @@
 		</ul>
 
 		</div>
+
+		<p></p>
 
 		<details>
 		<summary id="formula">EI maternity and parental formula for benefit calculation </summary>
@@ -496,270 +498,102 @@
 <script src="../../../js/megamenu-loader.js"></script>
 <!-- <script src="mat-par-estimator.js"></script> -->
 <script>
-
-// Declare variables here so available to other functions
+// Declare variables here so available to other functions...I hope
 var bestweeks;
 var avgWeekly;
-var leaveType;
-var makeTheMax = false;
-var weeksShared;
-
-
-
-	// Continue after entering salary
-	$(document).ready(
-		function(){
-			$("#continue-button-income").click(function () {
-					// This also needs to capture the value of the income...
-
-					$("#checkforvariableweeks").show("slow");
-					$("#continue-income").hide();
-
-				});
-		});
-
-		$(document).ready(
-			function(){
-				$("input[name=varyornot]").on( "change", function() {
-
-						var test = $(this).val();
-
-						if (test == "vary-no") {
-							$("#benefitdetails").show("slow");
-							$("#continue-varyornot").hide();
-							$("#getvariableweeks").hide("slow");
-						} else {
-							$("#getvariableweeks").show("slow");
-							$("#continue-varyornot").hide();
-							$("#benefitdetails").hide("slow");
-						}
-					});
-			});
-
-	// Continue after choosing leave option
-	$(document).ready(
-		function(){
-				$("input[name=leavetype]").on( "change", function() {
-
-						var test = $(this).val();
-
-						if (test == "standard") {
-							leaveType = "standard";
-							$("#will-you-share").show("slow");
-							$("#continue-leavetype").hide();
-						} else {
-							leaveType = "extended";
-							$("#will-you-share").show("slow");
-							$("#continue-leavetype").hide();
-						}
-		 });
-	 });
-
-	 $(document).ready(
-		 function(){
-				 $("input[name=willushare]").on( "change", function() {
-
-						 var test = $(this).val();
-
-						 if (test == "share-yes") {
-
-							 $("#howmuchtoshare").show("slow");
-							 $("#whentoapply").hide("slow");
-							 $("#continue-willushare").hide();
-						 } else {
-							 $("#whentoapply").show("slow");
-							 $("#howmuchtoshare").hide();
-							 $("#continue-willushare").hide("slow");
-						 }
-			});
-		});
-
-		//continue after choosing how many weeks to share
-		$(document).ready(
-				function(){
-						$("#continue-button-howmuchtoshare").click(function () {
-
-							$("#whentoapply").show("slow");
-							$("#continue-howmuchtoshare").hide();
-
-						});
-			});
-
-//postal check
 $(document).ready(
-
+	function(){
+			$("#docalc").click(function () {
+					$("#calcresults").show("slow");
+			});
+	});
+$(document).ready(
 		function(){
-				$("#postalcheck-2").click(function () {
-
-					var pcode = document.getElementById("postalcode-2").value;
-					var userPcode = document.getElementById("u-pcode2");
-					var userBestWeeks = document.getElementById("u-bestweeks2");
-					var bestWeeks2;
-
+				$("#postalcheck").click(function () {
+					var pcode = document.getElementById("postalcode").value;
+					var userPcode = document.getElementById("u-pcode");
+					var userBestWeeks = document.getElementById("u-bestweeks");
+					var userBestWeeks2 = document.getElementById("u-bestweeks2");
+					var userBestWeeks3 = document.getElementById("u-bestweeks3");
+					var userBestWeeks4 = document.getElementById("u-bestweeks4");
 					// Take first three chars from pcode.value
-					pcode = (pcode.slice(0,3));
-					pcode = (pcode.toUpperCase());
+					var pcode = (pcode.slice(0,3));
 					//  * -- Do the lookup -- *
-
-					bestWeeks2 = 20;
-
+					// var bestWeeks;
+					// For this to work, you'd have to take the table at http://srv129.services.gc.ca/eiregions/eng/rates_cur.aspx and
+					// map every postal code to one of those places. Then you can scrape the file daily or whatever to get the current
+					// value for each. I guess...
+					// Load the external datafile
+					// Find pcode in the prefixes
+					// use that to find the region
+					// For now we'll just fake it...
+					bestWeeks = 20;
 					userPcode.innerHTML = pcode;
-					userBestWeeks.innerHTML = bestWeeks2;
-
-					$("#bestweeksresult2").show("slow");
-
+					userBestWeeks.innerHTML = bestWeeks;
+					userBestWeeks2.innerHTML = bestWeeks;
+					userBestWeeks3.innerHTML = bestWeeks;
+					userBestWeeks4.innerHTML = bestWeeks;
+					$("#bestweeksresult").show("slow");
+					// Now wait a beat and pose the next question
+					setTimeout(function(){
+						$("#askbestweekincome").show("slow");
+					},1000);
 									});
 							});
-
-	$(document).ready(
-
-			function(){
-					$("#postalcheck").click(function () {
-
-						var pcode = document.getElementById("postalcode").value;
-						var userPcode = document.getElementById("u-pcode");
-						var userBestWeeks = document.getElementById("u-bestweeks");
-						var userBestWeeks2 = document.getElementById("u-bestweeks2");
-						var userBestWeeks3 = document.getElementById("u-bestweeks3");
-						var userBestWeeks4 = document.getElementById("u-bestweeks4");
-
-						// Take first three chars from pcode.value
-						pcode = (pcode.slice(0,3));
-						pcode = (pcode.toUpperCase());
-						//  * -- Do the lookup -- *
-
-						// var bestWeeks;
-
-						// For this to work, you'd have to take the table at http://srv129.services.gc.ca/eiregions/eng/rates_cur.aspx and
-						// map every postal code to one of those places. Then you can scrape the file daily or whatever to get the current
-						// value for each. I guess...
-
-						// Load the external datafile
-						// Find pcode in the prefixes
-						// use that to find the region
-
-						// For now we'll just fake it...
-						bestWeeks = 20;
-
-						userPcode.innerHTML = pcode;
-						userBestWeeks.innerHTML = bestWeeks;
-						userBestWeeks2.innerHTML = bestWeeks;
-						userBestWeeks3.innerHTML = bestWeeks;
-						userBestWeeks4.innerHTML = bestWeeks;
-
-						$("#continue-postalcheck").hide();
-
-						$("#bestweeksresult").show("slow");
-
-						// Now wait a beat and pose the next question
-						setTimeout(function(){
-							$("#askbestweekincome").show("slow");
-						},1000);
-
-
-
-										});
-								});
-
-	$(document).ready(
-			function(){
-					$("#averagecalc").click(function () {
-
-							var totalEarnings = document.getElementById("earnings").value;
-							var userTotalEarnings = document.getElementById("u-totalEarnings");
-							var userAvgWeekly = document.getElementById("u-avgWeekly");
-							var userWeeklyIncome = document.getElementById("weeklyincome");
-
-							// Need to clean the user input a bit
-							totalEarnings = totalEarnings.replace(/[^0-9.]/g, "");
-
-
-							avgWeekly = totalEarnings / bestWeeks;
-							avgWeekly = Math.round(avgWeekly * 100) / 100
-
-							userTotalEarnings.innerHTML = totalEarnings;
-							userAvgWeekly.innerHTML = avgWeekly;
-
-						//Set bestweeks so it can be used in the next thing...
-						userWeeklyIncome.value = avgWeekly;
-
-						$("#averageresult").show("slow");
-						$("#continue-bestweekearning").hide();
-
-						setTimeout(function(){
-							$("#askbestweekincome").show("slow");
-						},1000);
-						$("#benefitdetails").show("slow");
-					});
-			});
-
-			$(document).ready(
-				function(){
-						$("#docalc").click(function () {
-
-							var month = new Array();
-								month[0] = "January";
-								month[1] = "February";
-								month[2] = "March";
-								month[3] = "April";
-								month[4] = "May";
-								month[5] = "June";
-								month[6] = "July";
-								month[7] = "August";
-								month[8] = "September";
-								month[9] = "October";
-								month[10] = "November";
-								month[11] = "December";
-
-							var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-							var today = new Date() // This should be the due date they entered...
-							var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
-
-							var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
-							var currentSeconds = today.getTime();
-
-							var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
-
-							var matPercent = ".55";
-							var stdParPercent = ".55";
-							var extParPercent = ".33";
-
-							var percentVal = "55%"; // could be 33 if extending parental benefits
-
-							var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
-
-							var futureDate = new Date(futureSeconds);
-
-
-							// The locale should be FR-CA if the page is French
-							// Need to make sure this works in typically tested browsers...
-
-							// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
-
-							// These might work if not...
-							var theyear = futureDate.getFullYear();
-							var themonth = month[futureDate.getMonth()];
-							var thetoday = futureDate.getDate();
-
-							var newDate = themonth + " " + thetoday + ", " + theyear;
-
-							// document.write("Today is " + today + "<br>");
-							// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
-							// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
-
-							// document.write("<h2>Estimated calculation</h2>");
-							// document.write("<p>If you start your leave on " + dueDate + "<br>");
-							// document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
-							// document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
-
-
-
-								$("#results").show("slow");
-						});
+$(document).ready(
+		function(){
+				$("#averagecalc").click(function () {
+						var totalEarnings = document.getElementById("earnings").value;
+						var userTotalEarnings = document.getElementById("u-totalEarnings");
+						var userAvgWeekly = document.getElementById("u-avgWeekly");
+						// Need to clean the user input a bit
+						totalEarnings = totalEarnings.replace(/[^0-9.]/g, "");
+						avgWeekly = totalEarnings / bestWeeks;
+						userTotalEarnings.innerHTML = totalEarnings;
+						userAvgWeekly.innerHTML = avgWeekly;
+					$("#averageresult").show("slow");
 				});
-
-
-
+		});
+		var month = new Array();
+			month[0] = "January";
+			month[1] = "February";
+			month[2] = "March";
+			month[3] = "April";
+			month[4] = "May";
+			month[5] = "June";
+			month[6] = "July";
+			month[7] = "August";
+			month[8] = "September";
+			month[9] = "October";
+			month[10] = "November";
+			month[11] = "December";
+		var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+		var today = new Date() // This should be the due date they entered...
+		var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
+		var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
+		var currentSeconds = today.getTime();
+		var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
+		var matPercent = ".55";
+		var stdParPercent = ".55";
+		var extParPercent = ".33";
+		var percentVal = "55%"; // could be 33 if extending parental benefits
+		var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
+		var futureDate = new Date(futureSeconds);
+		// The locale should be FR-CA if the page is French
+		// Need to make sure this works in typically tested browsers...
+		// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
+		// These might work if not...
+		var theyear = futureDate.getFullYear();
+		var themonth = month[futureDate.getMonth()];
+		var thetoday = futureDate.getDate();
+		var newDate = themonth + " " + thetoday + ", " + theyear;
+		// document.write("Today is " + today + "<br>");
+		// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
+		// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
+		// document.write("<h2>Estimated calculation</h2>");
+		// document.write("<p>If you start your leave on " + dueDate + "<br>");
+		// document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
+		// document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
 </script>
 
 <script src="https://gc-proto.github.io/ei-mat-parental/scenarioA/js/cannedsearch-querystring.js"></script>
