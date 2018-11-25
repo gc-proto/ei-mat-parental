@@ -245,8 +245,8 @@
 		</div>
 		<p>Or</p>
 		<div class="form-group">
-			<label for="weeklyincome">Average weekly earnings</label><br />
-			<input type="text" id="weeklyincome" size='5'> /week
+			<label for="weeklyincome">Average weekly earnings<input type="text" id="weeklyincome" size='5'></label><br />
+			 /week
 		</div>
 		</fieldset>
 		<div class="form-group">
@@ -266,17 +266,15 @@
 				<legend>What type of parental benefits will you take?</legend>
 
 				<div class="radio">
-							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard parental (up to 35 weeks + 5 if sharing, maximum $547 per week)</label>
+							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;
+								Standard (up to $547 per week for up to 35 weeks, or 40 if shared)</label>
 				</div>
-				<!-- <div class="radio">
-							<label for="sharedparental"><input  type="radio" name="leavetype" value="sharedparental" id="sharedparental" />&#160;&#160;Shared parental (up to 40 weeks at a maximum of $547)</label>
-				</div> -->
+
 				<div class="radio">
-							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended parental (up to 61 weeks + 8 if sharing, maximum $328 per week)</label>
+							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;
+								Extended (up to $328 per week for up to 61 weeks, or 69 if shared)</label>
 				</div>
-				<!-- <div class="radio">
-							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Shared extended parental (up to 69 weeks at a maximum of $328)</label>
-				</div> -->
+
 			</fieldset>
 		</div>
 
@@ -294,15 +292,20 @@
 		</div> -->
 
 		<div class="form-group">
+			<fieldset>
 			<legend>How many weeks of parental leave will your partner take?</legend>
 			<!-- <p>(Sharing benefits among parents make more weeks of benefits available.)</p> -->
 			<input type="text" id="sharedweeks" size="2" value="&nbsp;0">
+			</fieldset>
 		</div>
 
 		<div class="form-group">
-			<label for="startdate">When will you apply? <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
-			<p style="margin-top:-.8em; font-size:0.7em">(This should be the date after your last day at work.)</p>
-			<input class="form-control" type="date" id="startdate" name="startdate" />
+			<fieldset>
+				<legend>How many weeks of parental leave will your partner take?</legend>
+				<label for="startdate">When will you apply? <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
+				<p style="margin-top:-.8em; font-size:0.7em">(This should be the date after your last day at work.)</p>
+				<input class="form-control" type="date" id="startdate" name="startdate" />
+			</fieldset>
 		</div>
 
 		<div style="padding-top:1.5em">
@@ -546,12 +549,16 @@ $(document).ready(
 						var totalEarnings = document.getElementById("earnings").value;
 						var userTotalEarnings = document.getElementById("u-totalEarnings");
 						var userAvgWeekly = document.getElementById("u-avgWeekly");
+						var userWeeklyIncome = document.getElementById("weeklyincome");
 						// Need to clean the user input a bit
 						totalEarnings = totalEarnings.replace(/[^0-9.]/g, "");
 						avgWeekly = totalEarnings / bestWeeks;
 						userTotalEarnings.innerHTML = totalEarnings;
 						userAvgWeekly.innerHTML = avgWeekly;
-					$("#averageresult").show("slow");
+						$("#averageresult").show("slow");
+						userWeeklyIncome.value = avgWeekly;
+
+
 				});
 		});
 		var month = new Array();

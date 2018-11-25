@@ -238,12 +238,14 @@
 
 		<br />
 		<fieldset>
+			<div id="ask-for-salary">
 			<legend>Enter your annual salary <strong>or</strong> your average weekly earnings.</legend>
 		<div class="form-group">
 			<label for="annualincome">Annual salary</label><br />
 			<input type="text" id="annualincome" size='7'>
 		</div>
 		<p>Or</p>
+		</div>
 		<div class="form-group">
 			<label for="weeklyincome">Average weekly earnings</label><br />
 			<input type="text" id="weeklyincome" size='5'> /week
@@ -266,13 +268,15 @@
 				<legend>What type of parental benefits will you take?</legend>
 
 				<div class="radio">
-							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;Standard parental (up to 35 weeks + 5 if sharing, maximum $547 per week)</label>
+							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;
+								Standard (up to $547 per week for up to 35 weeks + 5 if sharing)</label>
 				</div>
 				<!-- <div class="radio">
 							<label for="sharedparental"><input  type="radio" name="leavetype" value="sharedparental" id="sharedparental" />&#160;&#160;Shared parental (up to 40 weeks at a maximum of $547)</label>
 				</div> -->
 				<div class="radio">
-							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Extended parental (up to 61 weeks + 8 if sharing, maximum $328 per week)</label>
+							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;
+								Extended (up to $328 per week for up to 61 weeks + 8 if sharing)</label>
 				</div>
 				<!-- <div class="radio">
 							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Shared extended parental (up to 69 weeks at a maximum of $328)</label>
@@ -294,19 +298,25 @@
 		</div> -->
 
 		<div class="form-group">
+			<fieldset>
 			<legend>How many weeks of parental leave will your partner take?</legend>
 			<!-- <p>(Sharing benefits among parents make more weeks of benefits available.)</p> -->
-			<input type="text" id="sharedweeks" size="2" value="&nbsp;0">
+			<input type="text" id="sharedweeks" size="2" value="">
+			</fieldset>
 		</div>
 
 		<div class="form-group">
-			<label for="startdate">When will you apply? <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
-			<p style="margin-top:-.8em; font-size:0.7em">(This should be the date after your last day at work.)</p>
-			<input class="form-control" type="date" id="startdate" name="startdate" />
+
+			<fieldset>
+				<legend style="padding-top:.5em; margin-bottom:.5em">When will you apply?</legend>
+				<label for="startdate">This should be the date after your last day at work <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
+				<p style="margin-top:-.8em; font-size:0.7em"></p>
+				<input class="form-control" type="date" id="startdate" name="startdate" />
+			</fieldset>
 		</div>
 
-		<div style="padding-top:1.5em">
-			<input type="button" name="fbsbmt" id="docalc" value="Get estimate" class="btn btn-success btn-lg" onClick="docalc()">
+		<div style="padding-top:1.5em" id="calcbutton">
+			<input type="button" name="fbsbmt" id="docalc" value="Get estimate" class="btn btn-success btn-lg">
 		</div>
 		</form>
 
@@ -314,27 +324,27 @@
 
 
 		<div id="calcresults" style="display: none">
-		<h3>Estimated results:</h3>
-		<p>This is for <strong>estimation only</strong> based on what you entered above. We can't tell exactly how much you will receive until your application is processed.</p>
-		<ul>
-		<li>If you apply on <b>December 14, 2018</b><!-- startdate -->, you should begin receiving payments around <b>January 15, 2019</b><!-- startdate+paydelay -->.</li>
-		<li>Your maternity benefits are estimated at <b>$514</b><!-- calcmatpayment --> per week.</li>
-			<li>Your 15 weeks of maternity benefits will end about <b>March 29, 2019</b>.<!-- startdate+15weeks --></li>
-			<li>Your regular parental benefits will then begin. Those are estimated at <b>$514</b><!-- calcparpayment -->  per week.</li>
-			<li>You'll get 31 weeks of parental benefits, ending around <b>November 1, 2019</b></li>
-			<li>Other parents have 4 weeks to share and should apply separately.</li>
-			<li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li>
-		</ul>
-		<h4>If you took extended parental benefits:</h4>
-		<ul>
-			<li>Your parental benefits would begin around <b>March 29, 2019</b>. Those are estimated at <b>$314</b><!-- calcparpayment -->  per week.</li>
-			<li>You'll get <b>65</b> weeks of parental benefits, ending around <b>June 26, 2020</b></li>
-			<li>Other parents have 4 weeks to share and should apply separately.</li>
+			<h3>Estimated results:</h3>
+			<p>This is for <strong>estimation only</strong> based on what you entered above. We can't tell exactly how much you will receive until your application is processed.</p>
+			<ul>
+			<li>If you apply on <b>December 14, 2018</b><!-- startdate -->, you should begin receiving payments around <b>January 15, 2019</b><!-- startdate+paydelay -->.</li>
+			<li>Your maternity benefits are estimated at <b>$454.80</b><!-- calcmatpayment --> per week.</li>
+				<li>Your 15 weeks of maternity benefits will end about <b>March 29, 2019</b>.<!-- startdate+15weeks --></li>
+				<li>Your regular parental benefits will then begin. Those are estimated at <b>$454.80</b><!-- calcparpayment -->  per week.</li>
+				<li>You can take up to 30 weeks of parental benefits, ending around <b>October 22, 2019</b></li>
+				<li>You'll be sharing 10 weeks - other parents should apply separately.</li>
+				<!-- <li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li> -->
+				<li>Some employers provide additional money while you're on maternity or parental leave. This is called a top-up. Check with your employer to see if this applies to you.</li>
+			</ul>
+			<h4>If you took extended parental benefits:</h4>
+			<ul>
+				<li>Your parental benefits would begin around <b>March 29, 2019</b>. Those are estimated at <b>$272.88</b><!-- calcparpayment -->  per week.</li>
+				<li>You would get <b>59</b> weeks of parental benefits, ending around <b>June 11, 2020</b></li>
+				<li>You would be sharing 10 weeks - other parents should apply separately.</li>
 
-		</ul>
+			</ul>
 
-				<p></p>
-		</div>
+			</div>
 
 <br><p></p>
 		<details>
@@ -501,12 +511,7 @@
 // Declare variables here so available to other functions...I hope
 var bestweeks;
 var avgWeekly;
-$(document).ready(
-	function(){
-			$("#docalc").click(function () {
-					$("#calcresults").show("slow");
-			});
-	});
+
 $(document).ready(
 		function(){
 				$("#postalcheck").click(function () {
@@ -522,10 +527,11 @@ $(document).ready(
 					// var bestWeeks;
 					// For this to work, you'd have to take the table at http://srv129.services.gc.ca/eiregions/eng/rates_cur.aspx and
 					// map every postal code to one of those places. Then you can scrape the file daily or whatever to get the current
-					// value for each. I guess...
-					// Load the external datafile
-					// Find pcode in the prefixes
-					// use that to find the region
+					// value for each.
+					// 1. Load the external datafile
+					// 2. Find pcode in the prefixes
+					// 3. use that to find the region
+					// 4. then get the number of weeks for that region
 					// For now we'll just fake it...
 					bestWeeks = 20;
 					userPcode.innerHTML = pcode;
@@ -534,66 +540,94 @@ $(document).ready(
 					userBestWeeks3.innerHTML = bestWeeks;
 					userBestWeeks4.innerHTML = bestWeeks;
 					$("#bestweeksresult").show("slow");
+
 					// Now wait a beat and pose the next question
 					setTimeout(function(){
 						$("#askbestweekincome").show("slow");
-					},1000);
-									});
-							});
+						},1000);
+					});
+});
+
 $(document).ready(
 		function(){
 				$("#averagecalc").click(function () {
 						var totalEarnings = document.getElementById("earnings").value;
 						var userTotalEarnings = document.getElementById("u-totalEarnings");
 						var userAvgWeekly = document.getElementById("u-avgWeekly");
+						var userWeeklyIncome = document.getElementById("weeklyincome");
+
 						// Need to clean the user input a bit
 						totalEarnings = totalEarnings.replace(/[^0-9.]/g, "");
 						avgWeekly = totalEarnings / bestWeeks;
 						userTotalEarnings.innerHTML = totalEarnings;
 						userAvgWeekly.innerHTML = avgWeekly;
-					$("#averageresult").show("slow");
-				});
+						$("#averageresult").show("slow");
+						$("#ask-for-salary").hide();
+						userWeeklyIncome.value = avgWeekly;
 		});
-		var month = new Array();
-			month[0] = "January";
-			month[1] = "February";
-			month[2] = "March";
-			month[3] = "April";
-			month[4] = "May";
-			month[5] = "June";
-			month[6] = "July";
-			month[7] = "August";
-			month[8] = "September";
-			month[9] = "October";
-			month[10] = "November";
-			month[11] = "December";
-		var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-		var today = new Date() // This should be the due date they entered...
-		var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
-		var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
-		var currentSeconds = today.getTime();
-		var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
-		var matPercent = ".55";
-		var stdParPercent = ".55";
-		var extParPercent = ".33";
-		var percentVal = "55%"; // could be 33 if extending parental benefits
-		var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
-		var futureDate = new Date(futureSeconds);
-		// The locale should be FR-CA if the page is French
-		// Need to make sure this works in typically tested browsers...
-		// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
-		// These might work if not...
-		var theyear = futureDate.getFullYear();
-		var themonth = month[futureDate.getMonth()];
-		var thetoday = futureDate.getDate();
-		var newDate = themonth + " " + thetoday + ", " + theyear;
-		// document.write("Today is " + today + "<br>");
-		// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
-		// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
-		// document.write("<h2>Estimated calculation</h2>");
-		// document.write("<p>If you start your leave on " + dueDate + "<br>");
-		// document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
-		// document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
+});
+
+$(document).ready(
+	function(){
+			$("#docalc").click(function () {
+
+					// Would be good to disable after clicking later
+					// for now we'll just hide it so people see the results
+					// $("#docalc").removeClass('btn btn-success btn-lg');
+    			// $("#docalc").addClass('btn btn-lg');
+					// $("#calcbutton").hide();
+
+					$("#calcresults").show("slow");
+					// document.getElementById("calcresults").scrollIntoView({
+					//     behavior: "smooth", // or "auto" or "instant"
+					//     block: "start" // or "end"
+					// });;
+
+					var month = new Array();
+						month[0] = "January";
+						month[1] = "February";
+						month[2] = "March";
+						month[3] = "April";
+						month[4] = "May";
+						month[5] = "June";
+						month[6] = "July";
+						month[7] = "August";
+						month[8] = "September";
+						month[9] = "October";
+						month[10] = "November";
+						month[11] = "December";
+					var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+					var today = new Date() // This should be the due date they entered...
+					var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
+					var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
+					var currentSeconds = today.getTime();
+					var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
+					var matPercent = ".55";
+					var stdParPercent = ".55";
+					var extParPercent = ".33";
+					var percentVal = "55%"; // could be 33 if extending parental benefits
+					var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
+					var futureDate = new Date(futureSeconds);
+					// The locale should be FR-CA if the page is French
+					// Need to make sure this works in typically tested browsers...
+					// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
+					// These might work if not...
+					var theyear = futureDate.getFullYear();
+					var themonth = month[futureDate.getMonth()];
+					var thetoday = futureDate.getDate();
+					var newDate = themonth + " " + thetoday + ", " + theyear;
+					// document.write("Today is " + today + "<br>");
+					// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
+					// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
+					// document.write("<h2>Estimated calculation</h2>");
+					// document.write("<p>If you start your leave on " + dueDate + "<br>");
+					// document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
+					// document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
+			});
+	});
+
+
+
 </script>
 
 <script src="https://gc-proto.github.io/ei-mat-parental/scenarioA/js/cannedsearch-querystring.js"></script>
