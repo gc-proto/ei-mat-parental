@@ -4,7 +4,7 @@
 <!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
 <head>
 
-	<title>EI Maternity and Parental Benefits - Estimate your benefits - Canada.ca</title>
+	<title>EI Maternity and Parental Benefits - How much you could receive - Canada.ca</title>
 	<link rel="stylesheet" href="../../../css/mobile-mm.css" />
 	<link rel="stylesheet" href="../../../css/bootstrap.css" />
 	<link rel="stylesheet" href="../../../css/desktop-mm.css" />
@@ -140,7 +140,7 @@
 
 
 	    <h1 property="name" id="wb-cont" dir="ltr">
-	EI maternity and parental benefits - Estimate your benefits</h1>
+	EI maternity and parental benefits - How much you could receive</h1>
 
 	<section id="archived" class="wb-inv alert alert-warning wb-inview" data-inview="archived-bnr">
 
@@ -309,8 +309,8 @@
 
 			<fieldset>
 				<legend style="padding-top:.5em; margin-bottom:.5em">When will you apply?</legend>
-				<label for="startdate">This should be the date after your last day at work <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
-				<p style="margin-top:-.8em; font-size:0.7em"></p>
+				<label for="startdate">The date <strong>after</strong> your last day at work <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
+
 				<input class="form-control" type="date" id="startdate" name="startdate" />
 			</fieldset>
 		</div>
@@ -325,9 +325,9 @@
 			<p>This is for <strong>estimation only</strong> based on what you entered above. We can't tell exactly how much you will receive until your application is processed.</p>
 			<ul>
 			<li>If you apply on <b>December 14, 2018</b><!-- startdate -->, you should begin receiving payments around <b>January 15, 2019</b><!-- startdate+paydelay -->.</li>
-			<li>Your maternity benefits are estimated at <b>$454.80</b><!-- calcmatpayment --> per week.</li>
+			<li>Your maternity benefits are estimated at <b><span id="fill-matpayment"></span></b><!-- calcmatpayment --> per week.</li>
 				<li>Your 15 weeks of maternity benefits will end about <b>March 29, 2019</b>.<!-- startdate+15weeks --></li>
-				<li>Your regular parental benefits will then begin. Those are estimated at <b>$454.80</b><!-- calcparpayment -->  per week.</li>
+				<li>Your regular parental benefits will then begin. Those are estimated at <b><span id="fill-parpayment"></span></b><!-- calcparpayment -->  per week.</li>
 				<li>You can take up to 30 weeks of parental benefits, ending around <b>October 22, 2019</b></li>
 				<li>You'll be sharing 10 weeks - other parents should apply separately.</li>
 				<!-- <li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li> -->
@@ -508,6 +508,7 @@
 // Declare variables here so available to other functions...I hope
 var bestweeks;
 var avgWeekly;
+var shareType;
 
 $(document).ready(
 		function(){
@@ -566,20 +567,72 @@ $(document).ready(
 
 $(document).ready(
 	function(){
+			$("input[name=leavetype]").on( "change", function() {
+				shareType = $(this).val(); //sharetype becomes the ID of their choice
+	 });
+});
+
+$(document).ready(
+	function(){
 			$("#docalc").click(function () {
+					// Pull the needed values from the form
+					var annualIncome = document.getElementById("annualincome").value; //will only be one of these 2
+					var weeklyIncome = document.getElementById("weeklyincome").value;
+					var userGivenDate = document.getElementById("startdate").value;
 
-					// Would be good to disable after clicking later
-					// for now we'll just hide it so people see the results
-					// $("#docalc").removeClass('btn btn-success btn-lg');
-    			// $("#docalc").addClass('btn btn-lg');
-					// $("#calcbutton").hide();
+					// Prepare to populate fields in the results
+					var fillMatPayment = document.getElementById("fill-matpayment");
+					var fillParPayment = document.getElementById("fill-parpayment");
 
-					$("#calcresults").show("slow");
-					// document.getElementById("calcresults").scrollIntoView({
-					//     behavior: "smooth", // or "auto" or "instant"
-					//     block: "start" // or "end"
-					// });;
+					var parPercent;
+					var fullIncome;
+					var getMaxBenefits = false;
+					var maxIncome = 51700;
+					var stdParPercent = ".55";
+					var extParPercent = ".33";
+					var matPercent = ".55";
 
+					if (shareType == 'standard') {
+						parPercent = stdParPercent;
+					} else if (shareType == 'extended') {
+						parPercent = extParPercent;
+					} else {
+						// It'd be good to do a real error here...
+						alert("Please choose either standard or extended benefits");
+					}
+
+					if (weeklyIncome && annualIncome) {
+						alert("Please enter only one of annual salary or weekly earnings");
+					}
+
+					if (weeklyIncome) {
+						fullIncome = weeklyIncome * 52;
+					} else if (annualIncome) {
+						fullIncome = annualIncome;
+					}
+
+					if (fullIncome >= maxIncome) {
+						fullIncome = maxIncome; // never more than $52,700.
+					}
+
+					alert ("Full annual income: " + fullIncome);
+
+					// Here we know std or extended, and how much they make, up to 52700. So we can get their payments
+
+					var matPayment = fullIncome / 52 * matPercent;
+					var parPayment = fullIncome / 52 * parPercent;
+					matPayment = (Math.round(matPayment * 10)/10).toFixed(0)
+					parPayment = (Math.round(parPayment * 10)/10).toFixed(0)
+
+					// Start populating
+
+					fillMatPayment.innerHTML = matPayment;
+					fillParPayment.innerHTML = parPayment;
+
+					alert("You getting $" + matPayment + " for mat benefits, and $" + parPayment + " for parental.")
+
+
+					var startDate = new Date(userGivenDate); // for some reason this returns yesterday, I'll have to deal...
 					var month = new Array();
 						month[0] = "January";
 						month[1] = "February";
@@ -594,14 +647,28 @@ $(document).ready(
 						month[10] = "November";
 						month[11] = "December";
 					var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-					var today = new Date() // This should be the due date they entered...
-					var dueDate = today.toLocaleDateString('EN-CA', dateOptions);
+
+					var dueDate = startDate.toLocaleDateString('EN-CA', dateOptions);
 					var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
-					var currentSeconds = today.getTime();
+					var startSeconds = startDate.getTime();
 					var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
-					var matPercent = ".55";
-					var stdParPercent = ".55";
-					var extParPercent = ".33";
+
+
+					// alert ("Date entered is: " + userGivenDate + ", which is " + startDate + ", or " + milliseconds + "milliseconds.");
+
+					// Would be good to disable after clicking later
+					// for now we'll just hide it so people see the results
+					// $("#docalc").removeClass('btn btn-success btn-lg');
+    			// $("#docalc").addClass('btn btn-lg');
+					// $("#calcbutton").hide();
+
+					$("#calcresults").show("slow");
+					// document.getElementById("calcresults").scrollIntoView({
+					//     behavior: "smooth", // or "auto" or "instant"
+					//     block: "start" // or "end"
+					// });;
+
+
 					var percentVal = "55%"; // could be 33 if extending parental benefits
 					var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
 					var futureDate = new Date(futureSeconds);
