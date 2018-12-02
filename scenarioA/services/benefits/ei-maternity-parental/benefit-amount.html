@@ -339,8 +339,8 @@
 			<li>Your maternity benefits are estimated at <b>$<span id="fill-matpayment"></span></b> per week.</li>
 				<li>Your 15 weeks of maternity benefits will end around <b><span id="fill-matenddate"></span></b>. </li>
 				<li>Your parental benefits will then begin. Those are estimated at <b>$<span id="fill-parpayment"></span></b> per week.</li>
-				<li>You can take up to <span id="fill-totalweeks"></span> weeks of parental benefits, ending around <b><span id="fill-parenddate"></span></b></li>
-				<li>You'll be sharing 10 weeks - other parents should apply separately.</li>
+				<li>You can take up to <b><span id="fill-totalweeks"></span></b> weeks of parental benefits, ending around <b><span id="fill-parenddate"></span></b></li>
+				<li>You'll be sharing <span id="fill-sharedweeks"></span> weeks - other parents should apply separately.</li>
 				<!-- <li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li> -->
 				<li>Some employers provide additional money while you're on maternity or parental leave. This is called a top-up. Check with your employer to see if this applies to you.</li>
 			</ul>
@@ -600,6 +600,7 @@ $(document).ready(
 					var fillMatEndDate = document.getElementById("fill-matenddate");
 					var fillParEndDate = document.getElementById("fill-parenddate");
 					var fillTotalWeeks = document.getElementById("fill-totalweeks");
+					var fillSharedWeeks = document.getElementById("fill-sharedweeks");
 
 					// Constants
 					var parPercent;
@@ -695,6 +696,7 @@ $(document).ready(
 					fillMatEndDate.innerHTML = matEndDate;
 					fillParEndDate.innerHTML = parEndDate;
 					fillTotalWeeks.innerHTML = totalWeeks;
+					fillSharedWeeks.innerHTML = sharedWeeks;
 
 					// alert ("Date entered is: " + userGivenDate + ", which is " + startDate + ", or " + milliseconds + "milliseconds.");
 
