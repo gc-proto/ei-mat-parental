@@ -32,7 +32,18 @@
 	<meta property="dcterms:type" content="infosource" />
 	<meta name="dcterms.source" content="aem" />
 	<meta name="dcterms.identifier" content="Health_Canada" />
-
+	<style>
+		legend.with-explanation {
+			margin-bottom:.1em;
+		}
+		p.form-explanation {
+			font-size:.5em;
+			margin-bottom: -.2em;
+		}
+		legend {
+			font-weight: bold;
+		}
+	</style>
 </head>
 
 <body class="content" vocab="http://schema.org/" typeof="WebPage">
@@ -190,7 +201,7 @@
 
 
 		<p>
-			How many weeks of benefits you get depends on what leave options you choose. How much money you get depends on your insurable earnings over the past 52 weeks, before taxes. "Insurable earnings" means income you paid EI premiums on, including tips, bonuses and commissions. </p> <p>We can't tell you exactly how much you will receive until your application is processed.</p>
+			How many weeks of benefits you get depends on what leave options you choose. How much money you get depends on your insurable earnings over the past 52 weeks, up to a maximum amount. "Insurable earnings" means income you paid EI premiums on, including tips, bonuses and commissions. </p> <p>We can't tell you exactly how much you will receive until your application is processed.</p>
 
 
 <h2>Estimate your benefits</h2>
@@ -207,7 +218,7 @@
 					<summary>If your weekly earnings vary or your income has changed</summary>
 
 
-					<p id="bestweeks">The average weekly earnings are taken from the weeks where you earned the most, also known as best weeks, over the past year. The number of best weeks to use for the average depends on where you live. Enter your postal code to see how many best weeks to use in your estimate.</p>
+					<p id="bestweeks">The weeks you earned the most money over the past year are known as your best weeks. The number of best weeks we use to calculate your average weekly earnings depends on where you live. Enter your postal code to see how many best weeks to use in your estimate. The more you make during your best weeks, the higher your benefits will be (up to a maximum amount).</p>
 
 					<div class="form-group">
 						<label for="postalcode">Postal code</label><br />
@@ -239,7 +250,7 @@
 		<br />
 		<fieldset>
 			<div id="ask-for-salary">
-			<legend>Enter your annual salary <strong>or</strong> your average weekly earnings.</legend>
+			<legend>Enter your annual salary <strong>or</strong> your average weekly earnings (before&nbsp;taxes)</legend>
 		<div class="form-group">
 			<label for="annualincome">Annual salary</label><br />
 			<input type="text" id="annualincome" size='7'>
@@ -253,7 +264,8 @@
 		</fieldset>
 		<div class="form-group">
 			<fieldset>
-				<legend>Which benefits are you applying for?</legend>
+				<legend class="with-explanation">Which benefits are you applying for?</legend>
+				<p class="form-explanation">The person giving birth will usually take both</p>
 				<div class="checkbox">
 							<label for="matandparental"><input checked="checked" type="checkbox" name="matorpar" value="matandparental" id="matandparental" />&#160;&#160;Maternity (for the person giving birth only)</label>
 				</div>
@@ -265,22 +277,21 @@
 
 		<div class="form-group">
 			<fieldset>
-				<legend>What type of parental benefits will you take?</legend>
-
+				<legend class="with-explanation">What type of parental benefits will you take?</legend>
+				<p class="form-explanation">The total amount is the same, but you can decide how you receive your benefits</p>
 				<div class="radio">
 							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;
-								Standard (up to $547 per week for up to 35 weeks + 5 if sharing)</label>
+								<!-- Standard (up to $547 per week for up to 35 weeks + 5 if sharing) -->
+								Standard (higher weekly payments, but for a shorter time)
+							</label>
 				</div>
-				<!-- <div class="radio">
-							<label for="sharedparental"><input  type="radio" name="leavetype" value="sharedparental" id="sharedparental" />&#160;&#160;Shared parental (up to 40 weeks at a maximum of $547)</label>
-				</div> -->
 				<div class="radio">
 							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;
-								Extended (up to $328 per week for up to 61 weeks + 8 if sharing)</label>
+								<!-- Extended (up to $328 per week for up to 61 weeks + 8 if sharing) -->
+								Extended (lower weekly payments, but can last much longer)
+							</label>
 				</div>
-				<!-- <div class="radio">
-							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;Shared extended parental (up to 69 weeks at a maximum of $328)</label>
-				</div> -->
+
 			</fieldset>
 		</div>
 
@@ -299,8 +310,8 @@
 
 		<div class="form-group">
 			<fieldset>
-			<legend>How many weeks of parental leave will your partner take?</legend>
-			<!-- <p>(Sharing benefits among parents make more weeks of benefits available.)</p> -->
+			<legend class="with-explanation">How many weeks of parental leave will you share?</legend>
+			<p class="form-explanation">If you share benefits, more weeks of benefits are available</p>
 			<input type="text" id="sharedweeks" size="2" value="">
 			</fieldset>
 		</div>
@@ -309,7 +320,7 @@
 
 			<fieldset>
 				<legend style="padding-top:.5em; margin-bottom:.5em">When will you apply?</legend>
-				<label for="startdate">The date <strong>after</strong> your last day at work <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
+				<label for="startdate" style="font-weight:normal;">You must apply <strong>after</strong> your last day at work <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
 
 				<input class="form-control" type="date" id="startdate" name="startdate" />
 			</fieldset>
@@ -322,13 +333,13 @@
 
 		<div id="calcresults" style="display: none">
 			<h3>Estimated results:</h3>
-			<p>This is for <strong>estimation only</strong> based on what you entered above. We can't tell exactly how much you will receive until your application is processed.</p>
+			<p>This is for <strong>estimation only</strong>. It's based on what you entered above and assumes your application is processed successfully. We can't tell exactly how much you will receive until your application is processed.</p>
 			<ul>
 			<li>If you apply on <b><span id="fill-startdate"></span></b>, you should begin receiving payments around <b><span id="fill-benefitsstartdate"></span></b><!-- startdate+paydelay -->.</li>
 			<li>Your maternity benefits are estimated at <b>$<span id="fill-matpayment"></span></b> per week.</li>
-				<li>Your 15 weeks of maternity benefits will end about <b><span id="fill-matenddate"></span></b>. </li>
+				<li>Your 15 weeks of maternity benefits will end around <b><span id="fill-matenddate"></span></b>. </li>
 				<li>Your parental benefits will then begin. Those are estimated at <b>$<span id="fill-parpayment"></span></b> per week.</li>
-				<li>You can take up to 30 weeks of parental benefits, ending around <b>October 22, 2019</b></li>
+				<li>You can take up to <span id="fill-totalweeks"></span> weeks of parental benefits, ending around <b><span id="fill-parenddate"></span></b></li>
 				<li>You'll be sharing 10 weeks - other parents should apply separately.</li>
 				<!-- <li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li> -->
 				<li>Some employers provide additional money while you're on maternity or parental leave. This is called a top-up. Check with your employer to see if this applies to you.</li>
@@ -579,6 +590,7 @@ $(document).ready(
 					var annualIncome = document.getElementById("annualincome").value; //will only be one of these 2
 					var weeklyIncome = document.getElementById("weeklyincome").value;
 					var userGivenDate = document.getElementById("startdate").value;
+					var sharedWeeks = document.getElementById("sharedweeks").value;
 
 					// Prepare to populate fields in the results
 					var fillStartDate = document.getElementById("fill-startdate");
@@ -586,7 +598,10 @@ $(document).ready(
 					var fillMatPayment = document.getElementById("fill-matpayment");
 					var fillParPayment = document.getElementById("fill-parpayment");
 					var fillMatEndDate = document.getElementById("fill-matenddate");
+					var fillParEndDate = document.getElementById("fill-parenddate");
+					var fillTotalWeeks = document.getElementById("fill-totalweeks");
 
+					// Constants
 					var parPercent;
 					var fullIncome;
 					var getMaxBenefits = false;
@@ -594,6 +609,12 @@ $(document).ready(
 					var stdParPercent = ".55";
 					var extParPercent = ".33";
 					var matPercent = ".55";
+					var matTotalWeeks = 15;
+					var stdMaxWeeks = 35;
+					var extMaxWeeks = 61;
+					var stdSharedWeeks = 5;
+					var extSharedWeeks = 8;
+					var weeksToGet;
 
 					if (shareType == 'standard') {
 						parPercent = stdParPercent;
@@ -625,6 +646,23 @@ $(document).ready(
 					matPayment = (Math.round(matPayment * 10)/10).toFixed(0); //rounded to nearest dollar
 					parPayment = (Math.round(parPayment * 10)/10).toFixed(0);
 
+					// Get their total weeks
+					// STD: if sharing less than 5, 35 weeks for 1 parent, 5 for other before subtracting from 1st
+					// EXT: if sharing less than 8, 61 weeks for 1 parent, 8 for other before subtracting from 1st
+
+					if (shareType == 'standard') {
+						totalWeeks = (stdMaxWeeks + stdSharedWeeks) - sharedWeeks;
+						if (totalWeeks > stdMaxWeeks) {
+							totalWeeks = stdMaxWeeks;
+						}
+					} else if (shareType == 'extended') {
+						totalWeeks = (extMaxWeeks + extSharedWeeks) - sharedWeeks;
+						if (totalWeeks > extMaxWeeks) {
+							totalWeeks = extMaxWeeks;
+						}
+					}
+					// alert ("You get " + totalWeeks + " weeks of benefits.");
+
 					// Now do the date stuff
 
 					var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
@@ -640,9 +678,13 @@ $(document).ready(
 					benefitsStartDate = new Date(benefitsStartDate);
 					benefitsStartDate = benefitsStartDate.toLocaleDateString('EN-CA', dateOptions);
 
-					var matEndDate = startDateSeconds + (oneWeek * 15);
+					var matEndDate = startDateSeconds + (oneWeek * matTotalWeeks);
 					matEndDate = new Date(matEndDate);
 					matEndDate = matEndDate.toLocaleDateString('EN-CA', dateOptions);
+
+					var parEndDate = startDateSeconds + (oneWeek * totalWeeks);
+					parEndDate = new Date(parEndDate);
+					parEndDate = parEndDate.toLocaleDateString('EN-CA', dateOptions);
 
 					// Start populating
 
@@ -651,6 +693,8 @@ $(document).ready(
 					fillMatPayment.innerHTML = matPayment;
 					fillParPayment.innerHTML = parPayment;
 					fillMatEndDate.innerHTML = matEndDate;
+					fillParEndDate.innerHTML = parEndDate;
+					fillTotalWeeks.innerHTML = totalWeeks;
 
 					// alert ("Date entered is: " + userGivenDate + ", which is " + startDate + ", or " + milliseconds + "milliseconds.");
 
