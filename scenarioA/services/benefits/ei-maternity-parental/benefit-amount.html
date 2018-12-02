@@ -324,9 +324,9 @@
 			<h3>Estimated results:</h3>
 			<p>This is for <strong>estimation only</strong> based on what you entered above. We can't tell exactly how much you will receive until your application is processed.</p>
 			<ul>
-			<li>If you apply on <b><span id="fill-startdate"></span></b><!-- startdate -->, you should begin receiving payments around <b>January 15, 2019</b><!-- startdate+paydelay -->.</li>
+			<li>If you apply on <b><span id="fill-startdate"></span></b>, you should begin receiving payments around <b><span id="fill-benefitsstartdate"></span></b><!-- startdate+paydelay -->.</li>
 			<li>Your maternity benefits are estimated at <b>$<span id="fill-matpayment"></span></b> per week.</li>
-				<li>Your 15 weeks of maternity benefits will end about <b>March 29, 2019</b>. </li>
+				<li>Your 15 weeks of maternity benefits will end about <b><span id="fill-matenddate"></span></b>. </li>
 				<li>Your parental benefits will then begin. Those are estimated at <b>$<span id="fill-parpayment"></span></b> per week.</li>
 				<li>You can take up to 30 weeks of parental benefits, ending around <b>October 22, 2019</b></li>
 				<li>You'll be sharing 10 weeks - other parents should apply separately.</li>
@@ -582,8 +582,10 @@ $(document).ready(
 
 					// Prepare to populate fields in the results
 					var fillStartDate = document.getElementById("fill-startdate");
+					var fillBenefitsStartDate = document.getElementById("fill-benefitsstartdate");
 					var fillMatPayment = document.getElementById("fill-matpayment");
 					var fillParPayment = document.getElementById("fill-parpayment");
+					var fillMatEndDate = document.getElementById("fill-matenddate");
 
 					var parPercent;
 					var fullIncome;
@@ -613,33 +615,42 @@ $(document).ready(
 					}
 
 					if (fullIncome >= maxIncome) {
-						fullIncome = maxIncome; // never more than $52,700.
+						fullIncome = maxIncome; // never more than $51,700.
 					}
 
-					// Here we know std or extended, and how much they make, up to 52700. So we can get their payments
+					// Here we know std or extended, and how much they make, up to 51700. So we can get their payments
 
 					var matPayment = fullIncome / 52 * matPercent;
 					var parPayment = fullIncome / 52 * parPercent;
 					matPayment = (Math.round(matPayment * 10)/10).toFixed(0); //rounded to nearest dollar
 					parPayment = (Math.round(parPayment * 10)/10).toFixed(0);
 
+					// Now do the date stuff
+
+					var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
+					var dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
 					userGivenDate = userGivenDate + "T20:00:00-04:00"; // spec a timezone so it doesn't assume UTC
 					var startDate = new Date(userGivenDate);
 
-					var dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-
 					var benefitsApplyDate = startDate.toLocaleDateString('EN-CA', dateOptions);
-					var oneWeek = 7*24*60*60*1000; // in milliseconds = days*hours*minutes*seconds*milliseconds
-					var startSeconds = startDate.getTime();
-					var weeksAhead = 35+15; // This would be calculated based on the type of benefit, just a default for now
+					var startDateSeconds = startDate.getTime();
 
-					var benefitsStartDate = benefitsApplyDate;
+					var benefitsStartDate = startDateSeconds + (oneWeek * 4);
+					benefitsStartDate = new Date(benefitsStartDate);
+					benefitsStartDate = benefitsStartDate.toLocaleDateString('EN-CA', dateOptions);
+
+					var matEndDate = startDateSeconds + (oneWeek * 15);
+					matEndDate = new Date(matEndDate);
+					matEndDate = matEndDate.toLocaleDateString('EN-CA', dateOptions);
 
 					// Start populating
 
 					fillStartDate.innerHTML = benefitsApplyDate;
+					fillBenefitsStartDate.innerHTML = benefitsStartDate;
 					fillMatPayment.innerHTML = matPayment;
 					fillParPayment.innerHTML = parPayment;
+					fillMatEndDate.innerHTML = matEndDate;
 
 					// alert ("Date entered is: " + userGivenDate + ", which is " + startDate + ", or " + milliseconds + "milliseconds.");
 
