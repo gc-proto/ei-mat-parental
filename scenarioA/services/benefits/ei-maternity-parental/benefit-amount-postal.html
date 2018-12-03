@@ -541,7 +541,19 @@ $(document).ready(
 					// 4. then get the number of weeks for that region
 					// For now we'll just fake it...
 
-					
+					$.getJSON( "weeks.json", function( data ) {
+						var items = [];
+						$.each( data, function( key, val ) {
+							items.push( "<li id='" + key + "'>" + val + "</li>" );
+						});
+						alert(items);
+
+						$( "<ul/>", {
+							"class": "my-new-list",
+							html: items.join( "" )
+						}).appendTo( "body" );
+						alert(items);
+					});
 
 					bestWeeks = 20;
 					userPcode.innerHTML = pcode;
