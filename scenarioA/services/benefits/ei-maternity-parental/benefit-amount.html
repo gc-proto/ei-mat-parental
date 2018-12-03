@@ -541,7 +541,7 @@ $(document).ready(
 					// 4. then get the number of weeks for that region
 					// For now we'll just fake it...
 
-					
+
 
 					bestWeeks = 20;
 					userPcode.innerHTML = pcode;
@@ -706,6 +706,7 @@ $(document).ready(
 
 					var benefitsApplyDate = startDate.toLocaleDateString('EN-CA', dateOptions);
 					var startDateSeconds = startDate.getTime();
+					//startDateSeconds = startDateSeconds + oneWeek; //waiting period
 
 					var benefitsStartDate = startDateSeconds + (oneWeek * 4);
 					benefitsStartDate = new Date(benefitsStartDate);
@@ -716,8 +717,8 @@ $(document).ready(
 					matEndDate = matEndDate.toLocaleDateString('EN-CA', dateOptions);
 					matEndDate2 = matEndDate;
 
-					var parEndDate = startDateSeconds + (oneWeek * totalWeeks);
-					var altParEndDate = startDateSeconds + (oneWeek * altTotalWeeks);
+					var parEndDate = startDateSeconds + (oneWeek * (totalWeeks + matTotalWeeks)); // make sure matTotalWeeks is 0 if parental only
+					var altParEndDate = startDateSeconds + (oneWeek * (altTotalWeeks + matTotalWeeks));
 					parEndDate = new Date(parEndDate);
 					altParEndDate = new Date(altParEndDate);
 					parEndDate = parEndDate.toLocaleDateString('EN-CA', dateOptions);
