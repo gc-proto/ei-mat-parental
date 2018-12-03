@@ -38,6 +38,10 @@
 		}
 		p.form-explanation {
 			margin-bottom: -.2em;
+			line-height: 1.2!important;
+		}
+		small {
+			line-height: 1.2 !important;
 		}
 		legend {
 			font-weight: bold;
@@ -319,7 +323,7 @@
 
 			<fieldset>
 				<legend style="padding-top:.5em; margin-bottom:.5em">When will you apply?</legend>
-				<label for="startdate" style="font-weight:normal;"><small>You must apply <strong>after</strong> your last day at work</small> <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
+				<label for="startdate" style="font-weight:normal;"><small>You must apply <strong>after</strong> your last day at work</small> <span class="datepicker-format"> <small>(<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</small></span></label><br />
 
 				<input class="form-control" type="date" id="startdate" name="startdate" />
 			</fieldset>
@@ -751,30 +755,24 @@ $(document).ready(
 					// $("#calcbutton").hide();
 
 					$("#calcresults").show("slow");
-					calcButton.value = "Recalculate";
+
 					// document.getElementById("calcresults").scrollIntoView({
 					//     behavior: "smooth", // or "auto" or "instant"
 					//     block: "start" // or "end"
 					// });;
 
-					var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
-					var futureDate = new Date(futureSeconds);
-
-					// The locale should be FR-CA if the page is French
-					// Need to make sure this works in typically tested browsers...
-					// var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
-					// These might work if not...
-					var theyear = futureDate.getFullYear();
-					var themonth = month[futureDate.getMonth()];
-					var thetoday = futureDate.getDate();
-					var newDate = themonth + " " + thetoday + ", " + theyear;
-					// document.write("Today is " + today + "<br>");
-					// document.write("Current time in milliseconds is " + currentSeconds + "<br>");
-					// document.write("Future time in milliseconds is " + futureSeconds + "<br>");
-					// document.write("<h2>Estimated calculation</h2>");
-					// document.write("<p>If you start your leave on " + dueDate + "<br>");
-					// document.write("You'll get about " + weeksAhead + " weeks of benefits, until about: " + newDate + "</p>");
-					// document.write("<p>Your benefit will be " + percentVal + " of your salary, to a maximum of " );
+					// var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
+					// var futureDate = new Date(futureSeconds);
+					//
+					// // The locale should be FR-CA if the page is French
+					// // Need to make sure this works in typically tested browsers...
+					// // var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
+					// // These might work if not...
+					// var theyear = futureDate.getFullYear();
+					// var themonth = month[futureDate.getMonth()];
+					// var thetoday = futureDate.getDate();
+					// var newDate = themonth + " " + thetoday + ", " + theyear;
+					//
 			});
 	});
 
