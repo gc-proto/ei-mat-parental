@@ -204,7 +204,7 @@
 
 
 		<p>
-			How many weeks of benefits you get depends on what leave options you choose. How much money you get depends on your insurable earnings over the past 52 weeks, up to a maximum amount. "Insurable earnings" means income you paid EI premiums on, including tips, bonuses and commissions. </p> <
+			How many weeks of benefits you get depends on what leave options you choose. How much money you get depends on your insurable earnings over the past 52 weeks, up to a maximum amount. "Insurable earnings" means income you paid EI premiums on, including tips, bonuses and commissions. </p>
 
 
 <h2>Estimate your benefits</h2>
@@ -314,7 +314,7 @@
 
 		<div class="form-group">
 			<fieldset>
-			<legend class="with-explanation">How many weeks of parental leave will the other parent take?</legend>
+			<legend class="with-explanation">How many weeks of parental leave will you share?</legend>
 			<p class="form-explanation"><small>If you share benefits, more weeks of benefits are available</small></p>
 			<input type="text" id="sharedweeks" size="2" value="">
 			</fieldset>
@@ -616,25 +616,27 @@ $(document).ready(
 					var fillBenefitType = document.getElementById("fill-benefittype");
 					var fillAltBenefitType = document.getElementById("fill-altbenefittype");
 
-					// Constants
-					var parPercent;
-					var fullIncome;
-					var benefitType;
-					var altBenefitType;
+					// Constants and other vars
+
 					var getMaxBenefits = false;
 					var maxIncome = 51700;
 					var stdParPercent = ".55";
 					var extParPercent = ".33";
 					var matPercent = ".55";
 					var matTotalWeeks = 15;
-					var altTotalWeeks;
-					var altParPercent;
 					var stdMaxWeeks = 35;
 					var extMaxWeeks = 61;
 					var stdSharedWeeks = 5;
 					var extSharedWeeks = 8;
+					var localeId = 'EN-CA';
+					var altTotalWeeks;
+					var altParPercent;
 					var sharedWeeks2;
 					var weeksToGet;
+					var parPercent;
+					var fullIncome;
+					var benefitType;
+					var altBenefitType;
 
 					if (shareType == 'standard') {
 						benefitType = 'standard';
@@ -709,25 +711,25 @@ $(document).ready(
 					userGivenDate = userGivenDate + "T20:00:00-04:00"; // spec a timezone so it doesn't assume UTC
 					var startDate = new Date(userGivenDate);
 
-					var benefitsApplyDate = startDate.toLocaleDateString('EN-CA', dateOptions);
+					var benefitsApplyDate = startDate.toLocaleDateString(localeId, dateOptions);
 					var startDateSeconds = startDate.getTime();
 					//startDateSeconds = startDateSeconds + oneWeek; //waiting period
 
 					var benefitsStartDate = startDateSeconds + (oneWeek * 4);
 					benefitsStartDate = new Date(benefitsStartDate);
-					benefitsStartDate = benefitsStartDate.toLocaleDateString('EN-CA', dateOptions);
+					benefitsStartDate = benefitsStartDate.toLocaleDateString(localeId, dateOptions);
 
-					var matEndDate = startDateSeconds + (oneWeek * matTotalWeeks);
+					var matEndDate = startDateSeconds + (oneWeek * (matTotalWeeks + 1)); // plus 1 because of the waiting period
 					matEndDate = new Date(matEndDate);
-					matEndDate = matEndDate.toLocaleDateString('EN-CA', dateOptions);
+					matEndDate = matEndDate.toLocaleDateString(localeId, dateOptions);
 					matEndDate2 = matEndDate;
 
-					var parEndDate = startDateSeconds + (oneWeek * (totalWeeks + matTotalWeeks)); // make sure matTotalWeeks is 0 if parental only
-					var altParEndDate = startDateSeconds + (oneWeek * (altTotalWeeks + matTotalWeeks));
+					var parEndDate = startDateSeconds + (oneWeek * (totalWeeks + matTotalWeeks + 1)); // make sure matTotalWeeks is 0 if parental only
+					var altParEndDate = startDateSeconds + (oneWeek * (altTotalWeeks + matTotalWeeks + 1));
 					parEndDate = new Date(parEndDate);
 					altParEndDate = new Date(altParEndDate);
-					parEndDate = parEndDate.toLocaleDateString('EN-CA', dateOptions);
-					altParEndDate = altParEndDate.toLocaleDateString('EN-CA', dateOptions);
+					parEndDate = parEndDate.toLocaleDateString(localeId, dateOptions);
+					altParEndDate = altParEndDate.toLocaleDateString(localeId, dateOptions);
 
 					// Start populating
 
@@ -762,18 +764,6 @@ $(document).ready(
 					//     block: "start" // or "end"
 					// });;
 
-					// var futureSeconds = currentSeconds + (oneWeek * weeksAhead);
-					// var futureDate = new Date(futureSeconds);
-					//
-					// // The locale should be FR-CA if the page is French
-					// // Need to make sure this works in typically tested browsers...
-					// // var newDate = futureDate.toLocaleDateString('EN-CA', dateOptions);
-					// // These might work if not...
-					// var theyear = futureDate.getFullYear();
-					// var themonth = month[futureDate.getMonth()];
-					// var thetoday = futureDate.getDate();
-					// var newDate = themonth + " " + thetoday + ", " + theyear;
-					//
 			});
 	});
 
