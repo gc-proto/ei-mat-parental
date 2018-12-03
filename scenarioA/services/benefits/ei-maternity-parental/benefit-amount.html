@@ -37,7 +37,6 @@
 			margin-bottom:.1em;
 		}
 		p.form-explanation {
-			font-size:.5em;
 			margin-bottom: -.2em;
 		}
 		legend {
@@ -242,7 +241,7 @@
 
 					<div id="averageresult" style="display:none ">
 						<p><b>$<span id="u-totalEarnings"></span></b> divided by <span id="u-bestweeks4"></span> weeks = <br />
-							<big><b>$<span id="u-avgWeekly"></span></b> average weekly earnings</p></big>
+							<b>$<span id="u-avgWeekly"></span></b> average weekly earnings</p>
 					</div>
 					</details>
 
@@ -265,7 +264,7 @@
 		<div class="form-group">
 			<fieldset>
 				<legend class="with-explanation">Which benefits are you applying for?</legend>
-				<p class="form-explanation">The person giving birth will usually take both</p>
+				<p class="form-explanation"><small>The person giving birth will usually take both</small></p>
 				<div class="checkbox">
 							<label for="matandparental"><input checked="checked" type="checkbox" name="matorpar" value="matandparental" id="matandparental" />&#160;&#160;Maternity (for the person giving birth only)</label>
 				</div>
@@ -278,17 +277,17 @@
 		<div class="form-group">
 			<fieldset>
 				<legend class="with-explanation">What type of parental benefits will you take?</legend>
-				<p class="form-explanation">The total amount is the same, but you can decide how you receive your benefits</p>
+				<p class="form-explanation"><small>The total amount is similar, but you can decide how you receive your benefits</small></p>
 				<div class="radio">
 							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;
 								<!-- Standard (up to $547 per week for up to 35 weeks + 5 if sharing) -->
-								Standard (higher weekly payments, but for a shorter time)
+								Standard (higher payments, for up to 35 weeks, + 5 if sharing)
 							</label>
 				</div>
 				<div class="radio">
 							<label for="extended"><input  type="radio" name="leavetype" value="extended" id="extended" />&#160;&#160;
 								<!-- Extended (up to $328 per week for up to 61 weeks + 8 if sharing) -->
-								Extended (lower weekly payments, but can last much longer)
+								Extended (lower payments, for up to 61 weeks, + 8 if sharing)
 							</label>
 				</div>
 
@@ -311,7 +310,7 @@
 		<div class="form-group">
 			<fieldset>
 			<legend class="with-explanation">How many weeks of parental leave will you share?</legend>
-			<p class="form-explanation">If you share benefits, more weeks of benefits are available</p>
+			<p class="form-explanation"><small>If you share benefits, more weeks of benefits are available</small></p>
 			<input type="text" id="sharedweeks" size="2" value="">
 			</fieldset>
 		</div>
@@ -320,7 +319,7 @@
 
 			<fieldset>
 				<legend style="padding-top:.5em; margin-bottom:.5em">When will you apply?</legend>
-				<label for="startdate" style="font-weight:normal;">You must apply <strong>after</strong> your last day at work <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
+				<label for="startdate" style="font-weight:normal;"><small>You must apply <strong>after</strong> your last day at work</small> <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label><br />
 
 				<input class="form-control" type="date" id="startdate" name="startdate" />
 			</fieldset>
@@ -333,25 +332,24 @@
 
 		<div id="calcresults" style="display: none">
 			<h3>Estimated results:</h3>
-			<p>This is for <strong>estimation only</strong>. It's based on what you entered above and assumes your application is processed successfully. We can't tell exactly how much you will receive until your application is processed.</p>
+			<p>This is for <strong>estimation only</strong>. It's based on what you entered above, if your application is processed successfully. We can't tell exactly how much you will receive until your application is processed.</p>
 			<ul>
 			<li>If you apply on <b><span id="fill-startdate"></span></b>, you should begin receiving payments around <b><span id="fill-benefitsstartdate"></span></b><!-- startdate+paydelay -->.</li>
 			<li>Your maternity benefits are estimated at <b>$<span id="fill-matpayment"></span></b> per week.</li>
 				<li>Your 15 weeks of maternity benefits will end around <b><span id="fill-matenddate"></span></b>. </li>
-				<li>Your parental benefits will then begin. Those are estimated at <b>$<span id="fill-parpayment"></span></b> per week.</li>
-				<li>You can take up to <b><span id="fill-totalweeks"></span></b> weeks of parental benefits, ending around <b><span id="fill-parenddate"></span></b></li>
+				<li>Your <span id="fill-benefittype"></span> parental benefits will then begin. The payment is estimated at <b>$<span id="fill-parpayment"></span></b> per week.</li>
+				<li>You can take up to <b><span id="fill-totalweeks"></span></b> weeks of parental benefits, ending around <b><span id="fill-parenddate"></span></b>.</li>
 				<li>You'll be sharing <span id="fill-sharedweeks"></span> weeks - other parents should apply separately.</li>
 				<!-- <li><mark>You may be eligible for additional money through the <a href="">EI Family Supplement</a></mark></li> -->
 				<li>Some employers provide additional money while you're on maternity or parental leave. This is called a top-up. Check with your employer to see if this applies to you.</li>
 			</ul>
-			<h4>If you took extended parental benefits:</h4>
+			<h4>If you took <span id="fill-altbenefittype"></span> parental benefits instead:</h4>
 			<ul>
-				<li>Your parental benefits would begin around <b>March 29, 2019</b>. Those are estimated at <b>$272.88</b><!-- calcparpayment -->  per week.</li>
-				<li>You would get <b>59</b> weeks of parental benefits, ending around <b>June 11, 2020</b></li>
-				<li>You would be sharing 10 weeks - other parents should apply separately.</li>
-
+				<li>Your parental benefits would begin around <b><span id="fill-matenddate2"></span></b>. The payment is estimated at <b>$<span id="fill-altparpayment"></span></b>  per week.</li>
+				<li>You would get <b><span id="fill-alttotalweeks"></span></b> weeks of parental benefits, ending around <b><span id="fill-altparenddate"></span></b></li>
+				<li>You would be sharing <span id="fill-sharedweeks2"></span> weeks - other parents should apply separately.</li>
 			</ul>
-
+			<p>You can change values and recalculate to see updated results.</p>
 			</div>
 
 <br><p></p>
@@ -591,36 +589,57 @@ $(document).ready(
 					var weeklyIncome = document.getElementById("weeklyincome").value;
 					var userGivenDate = document.getElementById("startdate").value;
 					var sharedWeeks = document.getElementById("sharedweeks").value;
+					var calcButton = document.getElementById("docalc");
 
 					// Prepare to populate fields in the results
 					var fillStartDate = document.getElementById("fill-startdate");
 					var fillBenefitsStartDate = document.getElementById("fill-benefitsstartdate");
 					var fillMatPayment = document.getElementById("fill-matpayment");
 					var fillParPayment = document.getElementById("fill-parpayment");
+					var fillAltParPayment = document.getElementById("fill-altparpayment");
 					var fillMatEndDate = document.getElementById("fill-matenddate");
+					var fillMatEndDate2 = document.getElementById("fill-matenddate2");
 					var fillParEndDate = document.getElementById("fill-parenddate");
+					var fillAltParEndDate = document.getElementById("fill-altparenddate");
 					var fillTotalWeeks = document.getElementById("fill-totalweeks");
+					var fillAltTotalWeeks = document.getElementById("fill-alttotalweeks");
 					var fillSharedWeeks = document.getElementById("fill-sharedweeks");
+					var fillSharedWeeks2 = document.getElementById("fill-sharedweeks2");
+					var fillBenefitType = document.getElementById("fill-benefittype");
+					var fillAltBenefitType = document.getElementById("fill-altbenefittype");
 
 					// Constants
 					var parPercent;
 					var fullIncome;
+					var benefitType;
+					var altBenefitType;
 					var getMaxBenefits = false;
 					var maxIncome = 51700;
 					var stdParPercent = ".55";
 					var extParPercent = ".33";
 					var matPercent = ".55";
 					var matTotalWeeks = 15;
+					var altTotalWeeks;
+					var altParPercent;
 					var stdMaxWeeks = 35;
 					var extMaxWeeks = 61;
 					var stdSharedWeeks = 5;
 					var extSharedWeeks = 8;
+					var sharedWeeks2;
 					var weeksToGet;
 
 					if (shareType == 'standard') {
+						benefitType = 'standard';
 						parPercent = stdParPercent;
+						altBenefitType = 'extended';
+						altParPercent = extParPercent;
+
 					} else if (shareType == 'extended') {
+						benefitType = 'extended';
 						parPercent = extParPercent;
+						altBenefitType = 'standard';
+						altParPercent = stdParPercent;
+
 					} else {
 						// It'd be good to do a real error here...
 						alert("Please choose either standard or extended benefits");
@@ -644,8 +663,10 @@ $(document).ready(
 
 					var matPayment = fullIncome / 52 * matPercent;
 					var parPayment = fullIncome / 52 * parPercent;
+					var altParPayment = fullIncome / 52 * altParPercent;
 					matPayment = (Math.round(matPayment * 10)/10).toFixed(0); //rounded to nearest dollar
 					parPayment = (Math.round(parPayment * 10)/10).toFixed(0);
+					altParPayment = (Math.round(altParPayment * 10)/10).toFixed(0);
 
 					// Get their total weeks
 					// STD: if sharing less than 5, 35 weeks for 1 parent, 5 for other before subtracting from 1st
@@ -653,13 +674,21 @@ $(document).ready(
 
 					if (shareType == 'standard') {
 						totalWeeks = (stdMaxWeeks + stdSharedWeeks) - sharedWeeks;
+						altTotalWeeks = (extMaxWeeks + extSharedWeeks) - sharedWeeks;
 						if (totalWeeks > stdMaxWeeks) {
 							totalWeeks = stdMaxWeeks;
 						}
+						if (altTotalWeeks > extMaxWeeks) {
+							altTotalWeeks = extMaxWeeks;
+						}
 					} else if (shareType == 'extended') {
 						totalWeeks = (extMaxWeeks + extSharedWeeks) - sharedWeeks;
+						altTotalWeeks = (stdMaxWeeks + stdSharedWeeks) - sharedWeeks;
 						if (totalWeeks > extMaxWeeks) {
 							totalWeeks = extMaxWeeks;
+						}
+						if (altTotalWeeks > stdMaxWeeks) {
+							altTotalWeeks = stdMaxWeeks;
 						}
 					}
 					// alert ("You get " + totalWeeks + " weeks of benefits.");
@@ -682,10 +711,14 @@ $(document).ready(
 					var matEndDate = startDateSeconds + (oneWeek * matTotalWeeks);
 					matEndDate = new Date(matEndDate);
 					matEndDate = matEndDate.toLocaleDateString('EN-CA', dateOptions);
+					matEndDate2 = matEndDate;
 
 					var parEndDate = startDateSeconds + (oneWeek * totalWeeks);
+					var altParEndDate = startDateSeconds + (oneWeek * altTotalWeeks);
 					parEndDate = new Date(parEndDate);
+					altParEndDate = new Date(altParEndDate);
 					parEndDate = parEndDate.toLocaleDateString('EN-CA', dateOptions);
+					altParEndDate = altParEndDate.toLocaleDateString('EN-CA', dateOptions);
 
 					// Start populating
 
@@ -693,10 +726,17 @@ $(document).ready(
 					fillBenefitsStartDate.innerHTML = benefitsStartDate;
 					fillMatPayment.innerHTML = matPayment;
 					fillParPayment.innerHTML = parPayment;
+					fillAltParPayment.innerHTML = altParPayment;
 					fillMatEndDate.innerHTML = matEndDate;
+					fillMatEndDate2.innerHTML = matEndDate;
 					fillParEndDate.innerHTML = parEndDate;
+					fillAltParEndDate.innerHTML = altParEndDate;
 					fillTotalWeeks.innerHTML = totalWeeks;
+					fillAltTotalWeeks.innerHTML = altTotalWeeks;
 					fillSharedWeeks.innerHTML = sharedWeeks;
+					fillSharedWeeks2.innerHTML = sharedWeeks;
+					fillAltBenefitType.innerHTML = altBenefitType;
+					fillBenefitType.innerHTML = benefitType;
 
 					// alert ("Date entered is: " + userGivenDate + ", which is " + startDate + ", or " + milliseconds + "milliseconds.");
 
@@ -707,6 +747,7 @@ $(document).ready(
 					// $("#calcbutton").hide();
 
 					$("#calcresults").show("slow");
+					calcButton.value = "Recalculate";
 					// document.getElementById("calcresults").scrollIntoView({
 					//     behavior: "smooth", // or "auto" or "instant"
 					//     block: "start" // or "end"
