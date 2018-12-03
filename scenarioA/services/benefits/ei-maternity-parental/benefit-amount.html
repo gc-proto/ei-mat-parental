@@ -256,7 +256,7 @@
 		<br />
 		<fieldset>
 			<div id="ask-for-salary">
-			<legend>Enter your annual salary <strong>or</strong> your average weekly earnings (before&nbsp;taxes)</legend>
+			<legend class="required" aria-required="true">Enter your annual salary <strong>or</strong> your average weekly earnings (before&nbsp;taxes) <strong class="required" aria-required="true"><small>(required)</small></strong></legend>
 		<div class="form-group">
 			<label for="annualincome">Annual salary</label><br />
 			<input type="text" id="annualincome" size='7'>
@@ -270,7 +270,7 @@
 		</fieldset>
 		<div class="form-group">
 			<fieldset>
-				<legend class="with-explanation">Which benefits are you applying for?</legend>
+				<legend class="required with-explanation" aria-required="true">Which benefits are you applying for? <strong class="required" aria-required="true"><small>(required)</small></strong></legend>
 				<p class="form-explanation"><small>The person giving birth will usually take both</small></p>
 				<div class="checkbox">
 							<label for="matandparental"><input checked="checked" type="checkbox" name="matorpar" value="matandparental" id="matandparental" />&#160;&#160;Maternity (for the person giving birth only)</label>
@@ -283,7 +283,7 @@
 
 		<div class="form-group">
 			<fieldset>
-				<legend class="with-explanation">What type of parental benefits will you take?</legend>
+				<legend class="required with-explanation" aria-required="true">What type of parental benefits will you take? <strong class="required" aria-required="true"><small>(required)</small></strong></legend>
 				<p class="form-explanation"><small>The total amount is similar, but you can decide how you receive your benefits</small></p>
 				<div class="radio">
 							<label for="standard"><input  type="radio" name="leavetype" value="standard" id="standard" />&#160;&#160;
@@ -316,7 +316,7 @@
 
 		<div class="form-group">
 			<fieldset>
-			<legend class="with-explanation">How many weeks of parental leave will you share?</legend>
+			<legend class="required with-explanation" aria-required="true">How many weeks of parental leave will you share? <strong class="required" aria-required="true"><small>(required)</small></strong></legend>
 			<p class="form-explanation"><small>If you share benefits, more weeks of benefits are available</small></p>
 			<input type="text" id="sharedweeks" size="2" value="">
 			</fieldset>
@@ -325,7 +325,8 @@
 		<div class="form-group">
 
 			<fieldset>
-				<legend style="padding-top:.5em; margin-bottom:.5em">When will you apply?</legend>
+				<legend style="padding-top:.5em; margin-bottom:.5em" class="required with-explanation" aria-required="true">When will you apply? <strong class="required" aria-required="true"><small>(required)</small></strong></legend>
+
 				<label for="startdate" style="font-weight:normal;"><small>You must apply <strong>after</strong> your last day at work</small> <span class="datepicker-format"> <small>(<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</small></span></label><br />
 
 				<input class="form-control" type="date" id="startdate" name="startdate" />
@@ -631,6 +632,7 @@ $(document).ready(
 					var stdSharedWeeks = 5;
 					var extSharedWeeks = 8;
 					var localeId = 'EN-CA';
+					var familyIncomeMax = 25921; // this or below triggers Family income message
 					var altTotalWeeks;
 					var altParPercent;
 					var sharedWeeks2;
