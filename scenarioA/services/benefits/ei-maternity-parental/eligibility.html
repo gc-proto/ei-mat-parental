@@ -440,9 +440,7 @@ $(document).ready(
 					var pcode = document.getElementById("postalcode").value;
 					var userPcode = document.getElementById("u-pcode");
 					var userBestWeeks = document.getElementById("u-bestweeks");
-					var userBestWeeks2 = document.getElementById("u-bestweeks2");
-					var userBestWeeks3 = document.getElementById("u-bestweeks3");
-					var userBestWeeks4 = document.getElementById("u-bestweeks4");
+
 					// Take first three chars from pcode.value
 					var pcode = (pcode.slice(0,3));
 					//  * -- Do the lookup -- *
@@ -461,15 +459,10 @@ $(document).ready(
 					bestWeeks = 20;
 					userPcode.innerHTML = pcode;
 					userBestWeeks.innerHTML = bestWeeks;
-					userBestWeeks2.innerHTML = bestWeeks;
-					userBestWeeks3.innerHTML = bestWeeks;
-					userBestWeeks4.innerHTML = bestWeeks;
+
 					$("#bestweeksresult").show("slow");
 
-					// Now wait a beat and pose the next question
-					setTimeout(function(){
-						$("#askbestweekincome").show("slow");
-						},1000);
+
 					});
 });
 
