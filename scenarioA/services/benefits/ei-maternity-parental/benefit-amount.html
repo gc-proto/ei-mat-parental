@@ -217,48 +217,54 @@
 
 					<p>Answer a few questions to estimate your weekly payments and how long you could get them, or you can see the <a href="#formula">calculation formula</a> we use to determine benefits.</p>
 
+					<h2>Estimate your benefits</h2>
+
+					<h3>If your weekly earnings vary or your income changes</h3>
+
+					<p id="variable-explanation">If your weekly income is higher some weeks than others <b>a specific number of your highest paying weeks</b> are used to calculate your benefits. We call these your "best weeks." </p>
+					<details style="margin-top: 20px !important; margin-bottom: 30px !important;">
+										<summary>Find your number of "best weeks" for benefit calculation</summary>
+
+
+
+
+										<p>Any income you paid EI premiums on is "insurable," and is counted in calculating your benefits. This can include tips, bonuses or commissions. It can also include changes to your income due to a raise, change of employment, or going from part-time to full-time.</p>
+
+					<h3>How many weeks we use</h3>
+										<p id="bestweeks">Enter your postal code to find out your number of <b>"best weeks"</b>. How many weeks we use depends on the unemployment rate where you live.</p>
+
+										<div class="form-group">
+											<label for="postalcode">Postal code</label><br />
+											<input type="text" id="postalcode" size='7' maxlength="7">
+											<input type="button" name="postalcheck" id="postalcheck" value="Get your best weeks" class="btn">
+										</div>
+
+										<div id="bestweeksresult" style="display:none">
+											<p>For <b><span id="u-pcode"></span></b>, we use the average of your best <b><span id="u-bestweeks"></span></b> weeks.</p>
+										</div>
+
+
+										<div id="askbestweekincome" style="display:none">
+											<p>Now add up your total insurable earnings for your best <span id="u-bestweeks2"></span> weeks. If your earnings increase, you may get more money.</p>
+											<div class="formgroup">
+											<label for="earnings">Enter your total earnings for your best <span id="u-bestweeks3"></span> weeks</label><br />
+											<input type="text" id="earnings" size='6'>
+											<input type="button" name="averagecalc" id="averagecalc" value="Get average weekly earnings" class="btn">
+											</div>
+										</div>
+
+										<div id="averageresult" style="display:none ">
+											<p><b>$<span id="u-totalEarnings"></span></b> divided by <span id="u-bestweeks4"></span> weeks = <br />
+												<b>$<span id="u-avgWeekly"></span></b> average weekly earnings</p>
+										</div>
+							</details>
 
 
 		<fieldset style="border-top: 0px solid #fff !important;">
 
 <legend class="required" aria-required="true">Enter your annual salary <strong>or</strong> your average weekly earnings (before&nbsp;taxes) <strong class="required" aria-required="true"><small>(required)</small></strong></legend>
 
-<details style="margin-top: 95px !important; margin-bottom: 30px !important;">
-					<summary>If your weekly earnings vary or your income changes</summary>
 
-
-					<p id="variable-explanation">If your weekly income is higher some weeks than others <b>a specific number of your highest paying weeks</b> are used to calculate your benefits. We call these your "best weeks." </p>
-
-					<p>Any income you paid EI premiums on is "insurable," and is counted in calculating your benefits. This can include tips, bonuses or commissions. It can also include changes to your income due to a raise, change of employment, or going from part-time to full-time.</p>
-
-<h3>How many weeks we use</h3>
-					<p id="bestweeks">Enter your postal code to find out your number of <b>"best weeks"</b>. How many weeks we use depends on the unemployment rate where you live.</p>
-
-					<div class="form-group">
-						<label for="postalcode">Postal code</label><br />
-						<input type="text" id="postalcode" size='7' maxlength="7">
-						<input type="button" name="postalcheck" id="postalcheck" value="Get your best weeks" class="btn">
-					</div>
-
-					<div id="bestweeksresult" style="display:none">
-						<p>For <b><span id="u-pcode"></span></b>, we use the average of your best <b><span id="u-bestweeks"></span></b> weeks.</p>
-					</div>
-
-
-					<div id="askbestweekincome" style="display:none">
-						<p>Now add up your total insurable earnings for your best <span id="u-bestweeks2"></span> weeks. If your earnings increase, you may get more money.</p>
-						<div class="formgroup">
-						<label for="earnings">Enter your total earnings for your best <span id="u-bestweeks3"></span> weeks</label><br />
-						<input type="text" id="earnings" size='6'>
-						<input type="button" name="averagecalc" id="averagecalc" value="Get average weekly earnings" class="btn">
-						</div>
-					</div>
-
-					<div id="averageresult" style="display:none ">
-						<p><b>$<span id="u-totalEarnings"></span></b> divided by <span id="u-bestweeks4"></span> weeks = <br />
-							<b>$<span id="u-avgWeekly"></span></b> average weekly earnings</p>
-					</div>
-		</details>
 
 		<div class="form-group">
 			<label for="annualincome">Annual salary</label><br />
